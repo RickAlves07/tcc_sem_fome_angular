@@ -5,9 +5,10 @@
 	//body
 	--body-font: 'Nunito', sans-serif;
 	--body-container: 83.333333%;
-	--max-body-container: 1600px;
+	--max-body-container: 100%;
 	--border-radius-default: .5rem;
 	--body-frame: 8.3333335%;
+	background-color: rgb(255, 226, 226);
 
 	//header
 	--header-height: 3rem;
@@ -50,6 +51,17 @@
 	--z-index-modal: 1000;
 }
 
+body
+{
+	font-family: var(--body-font);
+	font-size: var(--normal-font-size);
+	background-color: var(--body-color);
+	color: var(--text-color);
+	width: var(--body-container);
+	max-width: var(--max-body-container);
+	margin: 0 var(--body-frame);
+}
+
 html
 {
 	scroll-behavior: smooth;
@@ -57,9 +69,10 @@ html
 
 button
 {
+	font-family: var(--body-font);
 	cursor: pointer;
 	border: solid 2px var(--second-color);
-	padding: 1rem;
+	padding: .5rem;
 	border-radius: var(--border-radius-default);
 }
 
