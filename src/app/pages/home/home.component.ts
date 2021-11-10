@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HomeButton } from 'src/app/models/home-button';
 
@@ -14,12 +15,12 @@ export class HomeComponent implements OnInit {
 		{
 			text: 'Realizar Uma Doação',
 			iconClass: '',
-			route: 'donation',
+			route: 'donations/new',
 		},
 		{
 			text: 'Doações Realizadas',
 			iconClass: '',
-			route: 'donation-history',
+			route: 'donations/history',
 		},
 	];
 
@@ -27,17 +28,17 @@ export class HomeComponent implements OnInit {
 		{
 			text: 'Realizar Uma Doação',
 			iconClass: '',
-			route: 'donation-new',
+			route: 'donation/new',
 		},
 		{
 			text: 'Entregas Realizadas',
 			iconClass: '',
-			route: 'shipment-history',
+			route: 'shipments/history',
 		},
 		{
 			text: 'Doações Aguardando Transporte',
 			iconClass: '',
-			route: 'donation-available',
+			route: 'donations/available',
 		}
 	];
 
@@ -45,33 +46,33 @@ export class HomeComponent implements OnInit {
 		{
 			text: 'Doações Agendadas',
 			iconClass: '',
-			route: 'scheduled-donations',
+			route: 'donations/scheduled',
 		},
 		{
 			text: 'Transferir Doações',
 			iconClass: '',
-			route: 'transfer-donations',
+			route: 'donations/transfer',
 		},
 		{
 			text: 'Doações Recebidas',
 			iconClass: '',
-			route: 'donations-received',
+			route: 'donations/received',
 		},
 	];
 
 	profileButtons: Array<HomeButton> = [];
 
-	constructor() {}
+	constructor(private router: Router) {}
 
 	ngOnInit(): void {
-
+		this.initProfileTypeButtons()
 	}
 
 	initProfileTypeButtons() {
-
+		this.profileButtons = this.distributorProfileButtons;
 	}
 
-	goToPage() {
-
+	goToPage(pagePath: string) {
+		this.router.navigateByUrl(pagePath);
 	}
 }

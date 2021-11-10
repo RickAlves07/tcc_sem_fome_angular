@@ -1,10 +1,9 @@
-<span>oi</span>
 <section>
 	<div>
-		<button *ngFor="let button of profileButtons" >
-			<i [ngClass]="[ button?.iconClass ]"></i>
-			<span>
-				{{ button?.text }}
+		<button *ngFor="let button of profileButtons"  >
+			<i [ngClass]="[ button.iconClass ]"></i>
+			<span (click)="goToPage(button.route)">
+				{{ button.text }}
 			</span>
 		</button>
 	</div>
