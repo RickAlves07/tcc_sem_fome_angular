@@ -1,0 +1,11 @@
+<span>oi</span>
+<section>
+	<div>
+		<button *ngFor="let button of profileButtons" >
+			<i [ngClass]="[ button?.iconClass ]"></i>
+			<span>
+				{{ button?.text }}
+			</span>
+		</button>
+	</div>
+</section>
