@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -19,6 +21,9 @@ import { ListProvisionsComponent } from './shared/components/list-provisions/lis
 import { ListShipmentsComponent } from './shared/components/list-shipments/list-shipments.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { DonationCheckUpComponent } from './pages/donation-check-up/donation-check-up.component';
+
 
 @NgModule({
 	declarations: [
@@ -27,23 +32,27 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 		SignUpComponent,
 		HomeComponent,
 		PaginationComponent,
-  NewDonationComponent,
-  DonationsHistoryComponent,
-  ShipmentsHistoryComponent,
-  AvailableDonationsComponent,
-  ScheduledDonationsComponent,
-  DonationsReceivedComponent,
-  TransferDonationComponent,
-  ListDonationsComponent,
-  ListProvisionsComponent,
-  ListShipmentsComponent,
-  HeaderComponent,
-  FooterComponent
+		NewDonationComponent,
+		DonationsHistoryComponent,
+		ShipmentsHistoryComponent,
+		AvailableDonationsComponent,
+		ScheduledDonationsComponent,
+		DonationsReceivedComponent,
+		TransferDonationComponent,
+		ListDonationsComponent,
+		ListProvisionsComponent,
+		ListShipmentsComponent,
+		HeaderComponent,
+		FooterComponent,
+		NotFoundComponent,
+		DonationCheckUpComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
+		FormsModule,
+		CommonModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]
