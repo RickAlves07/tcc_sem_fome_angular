@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+:root
+{
+	//body
+	--body-font: 'Nunito', sans-serif;
+	--body-container: 83.333333%;
+	--max-body-container: 1600px;
+	--border-radius-default: .5rem;
+	--body-frame: 8.3333335%;
+
+	//header
+	--header-height: 3rem;
+	--header-font-size: 1.25rem;
+
+	//colors
+	--base-color: 0; //red base (0, 84%, 59%) 	#ee3f3f
+	--light-color: 0; //white base (0, 0%, 100%) 	#ffffff
+	--dark-color: 0; //black base (0, 0%, 18%) #2e2e2e
+
+	--first-color: hsl(var(--base-color), 84%, 59%);
+	--second-color: hsl(var(--base-color), 69%, 61%);
+	--first-color-alt: hsl(var(--base-color), 57%, 53%);
+	--first-color-lighter: hsl(var(--base-color), 92%, 85%);
+	--title-color: hsl(var(--base-color), 8%, 15%);
+	--text-color: hsl(var(--base-color), 8%, 45%);
+	--text-color-light: hsl(var(--base-color), 8%, 65%);
+	--input-color: hsl(var(--base-color), 70%, 96%);
+	--body-color: hsl(var(--base-color), 60%, 99%);
+	--container-color: hsl(var(--base-color), 0%, 100%);
+
+	//font-sizes
+	//default
+	--h1-font-size: 1.5rem;
+	--h2-font-size: 1.25rem;
+	--h3-font-size: 1.125rem;
+	--big-font-size: 2rem;
+	--normal-font-size: 1rem;
+	--small-font-size: .8rem;
+	--smaller-font-size: .75rem;
+
+	//weight
+	--font-medium: 600;
+	--font-semi-bold: 700;
+	--font-bold: 800;
+
+	//z-index
+	--z-index-tooltip: 10;
+	--z-index-fixed: 100;
+	--z-index-modal: 1000;
+}
+
+html
+{
+	scroll-behavior: smooth;
+}
+
+button
+{
+	cursor: pointer;
+	border: solid 2px var(--second-color);
+	padding: 1rem;
+	border-radius: var(--border-radius-default);
+}
+
+button:hover
+{
+	background-color: var(--second-color);
+}
