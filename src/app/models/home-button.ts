@@ -1,5 +1,5 @@
 export type HomeButton = {
-	text: String,
-	iconClass: String
-	route: String,
+	text: string,
+	iconClass: string
+	route: string,
 }
