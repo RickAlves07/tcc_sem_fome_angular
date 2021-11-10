@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ShipmentsHistoryComponent } from './pages/shipments-history/shipments-history.component';
 import { TransferDonationComponent } from './pages/transfer-donation/transfer-donation.component';
 import { ScheduledDonationsComponent } from './pages/scheduled-donations/scheduled-donations.component';
@@ -13,7 +14,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent},
-	{ path: 'signup', component: SignUpComponent},
+	{ path: 'sign-up', component: SignUpComponent},
 	{ path: 'home', component: HomeComponent},
 	{ path: 'donations/new', component: NewDonationComponent },
 	{ path: 'donations/available', component: AvailableDonationsComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
 	{ path: 'donations/scheduled', component: ScheduledDonationsComponent},
 	{ path: 'donations/transfer', component: TransferDonationComponent},
 	{ path: 'shipment/history', component: ShipmentsHistoryComponent},
+	{ path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
