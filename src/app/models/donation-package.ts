@@ -20,4 +20,3 @@ export class DonationPackage {
 		this.total_weight = 0;
 	}
 };
-
