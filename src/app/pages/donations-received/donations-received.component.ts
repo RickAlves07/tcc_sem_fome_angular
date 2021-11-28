@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-donations-received',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationsReceivedComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+	private title: Title) {
+		this.title.setTitle('TCC CC - Inicio')
+	}
+
 
   ngOnInit(): void {
   }

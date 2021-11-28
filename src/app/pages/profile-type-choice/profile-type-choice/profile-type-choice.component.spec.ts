@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScheduledDonationsComponent } from './scheduled-donations.component';
+import { ProfileTypeChoiceComponent } from './profile-type-choice.component';
 
-describe('ScheduledDonationsComponent', () => {
-  let component: ScheduledDonationsComponent;
-  let fixture: ComponentFixture<ScheduledDonationsComponent>;
+describe('ProfileTypeChoiceComponent', () => {
+  let component: ProfileTypeChoiceComponent;
+  let fixture: ComponentFixture<ProfileTypeChoiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScheduledDonationsComponent ]
+      declarations: [ ProfileTypeChoiceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScheduledDonationsComponent);
+    fixture = TestBed.createComponent(ProfileTypeChoiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

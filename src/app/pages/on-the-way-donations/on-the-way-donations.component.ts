@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-	selector: 'app-transfer-donation',
-	templateUrl: './transfer-donation.component.html',
-	styleUrls: ['./transfer-donation.component.scss']
+	selector: 'app-on-the-way-donations',
+	templateUrl: './on-the-way-donations.component.html',
+	styleUrls: ['./on-the-way-donations.component.scss']
 })
-export class TransferDonationComponent implements OnInit {
+export class OnTheWayDonationsComponent implements OnInit {
 
 	constructor(
 		private title: Title

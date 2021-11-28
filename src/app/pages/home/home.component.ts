@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HomeButton } from 'src/app/models/home-button';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-home',
@@ -13,9 +14,14 @@ export class HomeComponent implements OnInit {
 
 	readonly donorProfileButtons: Array<HomeButton> = [
 		{
-			text: 'Realizar Uma Doação',
+			text: 'Nova Doação',
 			iconClass: '',
 			route: 'donations/new',
+		},
+		{
+			text: 'Doações em Progresso',
+			iconClass: '',
+			route: 'donations/in-progress',
 		},
 		{
 			text: 'Doações Realizadas',
@@ -26,9 +32,14 @@ export class HomeComponent implements OnInit {
 
 	readonly transporterProfileButtons: Array<HomeButton> = [
 		{
-			text: 'Realizar Uma Doação',
+			text: 'Doações Aguardando Transporte',
 			iconClass: '',
-			route: 'donation/new',
+			route: 'donations/available',
+		},
+		{
+			text: 'Entregas em Progresso',
+			iconClass: '',
+			route: 'shipments/history',
 		},
 		{
 			text: 'Entregas Realizadas',
@@ -36,20 +47,30 @@ export class HomeComponent implements OnInit {
 			route: 'shipments/history',
 		},
 		{
-			text: 'Doações Aguardando Transporte',
+			text: 'Nova Doação',
 			iconClass: '',
-			route: 'donations/available',
-		}
+			route: 'donation/new',
+		},
+		{
+			text: 'Doações Realizadas',
+			iconClass: '',
+			route: 'donations/history',
+		},
 	];
 
 	readonly distributorProfileButtons: Array<HomeButton> = [
 		{
-			text: 'Doações Agendadas',
+			text: 'Doações a Caminho',
 			iconClass: '',
-			route: 'donations/scheduled',
+			route: 'donations/on-the-way',
 		},
 		{
-			text: 'Transferir Doações',
+			text: 'Transferências em Progresso',
+			iconClass: '',
+			route: 'donations/transfer/in-progress',
+		},
+		{
+			text: 'Transferir Alimentos',
 			iconClass: '',
 			route: 'donations/transfer',
 		},
@@ -62,7 +83,11 @@ export class HomeComponent implements OnInit {
 
 	profileButtons: Array<HomeButton> = [];
 
-	constructor(private router: Router) {}
+	constructor(
+		private router: Router,
+		private title: Title) {
+			this.title.setTitle('TCC CC - Inicio')
+		}
 
 	ngOnInit(): void {
 		this.initProfileTypeButtons()

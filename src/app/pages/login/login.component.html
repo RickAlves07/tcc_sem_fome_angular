@@ -1,1 +1,29 @@
-<p>login works!</p>
+<section>
+	<div>
+		<h3>Login</h3>
+	</div>
+	<div class="row">
+		<div>
+			<label>
+				Email
+			</label>
+			<input type="text" [(ngModel)]="userLogin.email" autofocus>
+		</div>
+		<div>
+			<label>
+				Senha
+			</label>
+			<input type="password" [(ngModel)]="userLogin.password">
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<button (click)="login()" type="submit">
+				<span>
+					Login
+				</span>
+				<i></i>
+			</button>
+		</div>
+	</div>
+</section>

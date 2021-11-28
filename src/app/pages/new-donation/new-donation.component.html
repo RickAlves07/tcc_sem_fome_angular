@@ -1,1 +1,62 @@
-<p>new-donation works!</p>
+<section>
+	<div>
+		<i></i>
+		<a [routerLink]="['/home']">
+			Voltar
+		</a>
+	</div>
+	<h3>Quais alimentos serão doados?</h3>
+	<div *ngFor="let provision of provisions; let i = index" class="row">
+		<div>
+			<label>
+				Descrição do alimento
+			</label>
+			<input type="text" [(ngModel)]="provision.description" autofocus (change)="donationIsValid()">
+		</div>
+		<div>
+			<label>
+				Peso
+			</label>
+			<input type="number" [(ngModel)]="provision.unit_weight" (change)="donationIsValid()"><span>Kg</span>
+		</div>
+		<div>
+			<label>
+				Quantidade
+			</label>
+			<input type="number" [(ngModel)]="provision.quantity" (change)="donationIsValid()">
+		</div>
+		<div>
+			<label>
+				Data de validade
+			</label>
+			<input type="date" [(ngModel)]="calendarDateString[i]" (change)="donationIsValid()">
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<button (click)="addNewProvision()" [disabled]="!donationIsValid()">
+				<span>
+					Adicionar mais um item
+				</span>
+			</button>
+		</div>
+		<div>
+			<span>
+				Total de Items: {{ donation.total_items }}
+			</span>
+			<span>
+				Peso Total: {{ donation.total_weight }}
+			</span>
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<button (click)="confirmDonation()" >
+				<span>
+					Prosseguir
+				</span>
+				<i></i>
+			</button>
+		</div>
+	</div>
+</section>

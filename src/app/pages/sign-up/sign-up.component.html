@@ -1,1 +1,35 @@
-<p>sign-up works!</p>
+<section>
+	<div>
+		<h3>Cadastro</h3>
+	</div>
+	<div class="row">
+		<div>
+			<label>
+				Email
+			</label>
+			<input type="text" [(ngModel)]="userRegister.user.email" (keyup)="validFields()" autofocus>
+		</div>
+		<div>
+			<label>
+				Digite uma senha
+			</label>
+			<input type="password" [(ngModel)]="userRegister.user.password" (keyup)="validFields()">
+		</div>
+		<div>
+			<label>
+				Confirmar senha
+			</label>
+			<input type="password" [(ngModel)]="confirmPassword" (keyup)="validFields()">
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<button type="submit" (click)="goToProfileTypeChoice()" [disabled]="disableRegisterButton">
+				<span>
+					Confirmar
+				</span>
+				<i></i>
+			</button>
+		</div>
+	</div>
+</section>

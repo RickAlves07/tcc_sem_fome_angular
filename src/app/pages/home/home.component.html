@@ -1,8 +1,8 @@
 <section>
 	<div>
-		<button *ngFor="let button of profileButtons"  >
+		<button *ngFor="let button of profileButtons" (click)="goToPage(button.route)">
 			<i [ngClass]="[ button.iconClass ]"></i>
-			<span (click)="goToPage(button.route)">
+			<span>
 				{{ button.text }}
 			</span>
 		</button>

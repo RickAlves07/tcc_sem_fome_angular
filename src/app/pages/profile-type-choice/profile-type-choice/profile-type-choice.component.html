@@ -1,0 +1,22 @@
+<section>
+	<div>
+		<button *ngFor="let profile of profilesItems" (mouseenter)="changeTextInfos(profile.profileType)">
+			<i [ngClass]="[ profile.iconClass ]"></i>
+			<span>
+				{{ profile.profileName }}
+			</span>
+		</button>
+	</div>
+	<div>
+		<div>
+			<span>{{ itemToShow.description }}</span>
+		</div>
+	</div>
+	<div>
+		<button (click)="goToCompleteRegistration(itemToShow.profileType)">
+			<span>
+				{{ itemToShow.textButton }}
+			</span>
+		</button>
+	</div>
+</section>
