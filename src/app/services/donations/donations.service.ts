@@ -23,8 +23,8 @@ export class DonationsService {
 		return this.http.get(`${this.url}/available`);
 	}
 
-	getListScheduledDonations(){
-		return this.http.get(`${this.url}/scheduled`);
+	getListOnTheWayDonations(){
+		return this.http.get(`${this.url}/on-the-way`);
 	}
 
 	getListDonationsReceived(){
