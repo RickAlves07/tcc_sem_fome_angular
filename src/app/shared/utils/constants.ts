@@ -25,3 +25,17 @@ export const profilesTypes = {
 	Transporter: 'transporter',
 	Distributor: 'distributor',
 }
+
+export const TranslatedProfilesTypes = {
+	donor: 'Doador',
+	transporter: 'Transportador',
+	distributor: 'Distribuidor',
+}
+
+export const donationsByStatusToReturnByRouteParam = {
+	InProgress: 'in-progress',
+	History: 'history',
+	Available: 'available',
+	OnTheWay: 'on-the-way',
+	Received: 'received',
+}
