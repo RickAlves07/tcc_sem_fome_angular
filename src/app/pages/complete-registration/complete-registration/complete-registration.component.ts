@@ -19,7 +19,6 @@ export class CompleteRegistrationComponent implements OnInit {
 		private registerService: RegisterService,
 	) {
 		this.userRegister = { ...this.registerService.userRegister };
-		console.log(this.userRegister);
 		this.title.setTitle('TCC CC - Complete seu Cadastro');
 	}
 
