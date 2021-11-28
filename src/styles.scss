@@ -8,7 +8,7 @@
 	--max-body-container: 100%;
 	--border-radius-default: .5rem;
 	--body-frame: 8.3333335%;
-	background-color: rgb(255, 226, 226);
+	--body-color: rgb(255, 226, 226);
 
 	//header
 	--header-height: 3rem;
@@ -16,7 +16,7 @@
 
 	//colors
 	--base-color: 0; //red base (0, 84%, 59%) 	#ee3f3f
-	--light-color: 0; //white base (0, 0%, 100%) 	#ffffff
+	--light-color: 210; //white base (210, 17%, 98%) 	#F8F9FA
 	--dark-color: 0; //black base (0, 0%, 18%) #2e2e2e
 
 	--first-color: hsl(var(--base-color), 84%, 59%);
@@ -71,12 +71,12 @@ button
 {
 	font-family: var(--body-font);
 	cursor: pointer;
-	border: solid 2px var(--second-color);
+	border: solid 2px var(--text-color);
 	padding: .5rem;
 	border-radius: var(--border-radius-default);
 }
 
 button:hover
 {
-	background-color: var(--second-color);
+	background-color: var(--text-color);
 }
