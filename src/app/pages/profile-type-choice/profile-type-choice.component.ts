@@ -1,6 +1,6 @@
-import { profilesTypes, emptyString } from './../../../shared/utils/constants';
+
 import { Component, OnInit } from '@angular/core';
-import { TranslatedProfilesTypes } from 'src/app/shared/utils/constants';
+import { profilesTypes, TranslatedProfilesTypes } from 'src/app/shared/utils/constants';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserRegister } from 'src/app/models/user-register';

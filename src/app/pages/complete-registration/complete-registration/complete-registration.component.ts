@@ -15,7 +15,6 @@ export class CompleteRegistrationComponent implements OnInit {
 
 	constructor(
 		private title: Title,
-		private router: Router,
 		private registerService: RegisterService,
 	) {
 		this.userRegister = { ...this.registerService.userRegister };
