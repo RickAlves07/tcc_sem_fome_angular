@@ -38,10 +38,8 @@ export class LoginComponent implements OnInit {
 		this.loading = true;
 		this.authenticationService.login(this.userLogin)
 		.subscribe(
-
 			data => {
-				this.authenticationService.setLocalStorage(data);
-				this.router.navigate(['/home']);
+				this.authenticationService.goToHome(data);
 			},
 			error => {
 				this.error = error;

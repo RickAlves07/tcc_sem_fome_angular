@@ -9,6 +9,10 @@ export class DonationsService {
 
 	private url = environment.apiUrl + '/donations';
 
+	public newDonation: any;
+
+	public distributorData: any;
+
 	constructor(private http: HttpClient) { }
 
 	saveNewDonation(data: any){

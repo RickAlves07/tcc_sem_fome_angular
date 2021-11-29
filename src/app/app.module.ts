@@ -26,8 +26,9 @@ import { ShipmentTimelineComponent } from './shared/components/shipment-timeline
 import { LoginComponent } from './pages/login/login.component';
 import { JwtInterceptor } from './middleware/jwt-interceptor';
 import { ErrorInterceptor } from './middleware/error-interceptor';
-import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-type-choice/profile-type-choice.component';
 import { CompleteRegistrationComponent } from './pages/complete-registration/complete-registration/complete-registration.component';
+import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-type-choice.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -51,9 +52,9 @@ import { CompleteRegistrationComponent } from './pages/complete-registration/com
 		FooterComponent,
 		NotFoundComponent,
 		DonationCheckUpComponent,
-  ShipmentTimelineComponent,
-  ProfileTypeChoiceComponent,
-  CompleteRegistrationComponent,
+		ShipmentTimelineComponent,
+		ProfileTypeChoiceComponent,
+		CompleteRegistrationComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -61,6 +62,7 @@ import { CompleteRegistrationComponent } from './pages/complete-registration/com
 		HttpClientModule,
 		FormsModule,
 		CommonModule,
+		NgSelectModule,
 	],
 	providers: [
 		JwtInterceptor,

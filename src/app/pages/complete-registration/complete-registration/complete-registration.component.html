@@ -1,1 +1,165 @@
-<p>complete-registration works!</p>
+<section>
+	<div>
+		<div>
+			<i class="uil uil-angle-left-b"></i>
+		</div>
+		<div>
+			<i [ngClass]="[profileData.iconClass]"></i>
+			<h3>{{ profileData.profileName }}</h3>
+		</div>
+	</div>
+	<h4>Dados do {{ profileData.profileName }}</h4>
+	<div>
+		<div>
+			<ng-select [clearable]="false" [(ngModel)]="personSelected" [items]="personOptions">
+			</ng-select>
+		</div>
+	</div>
+	<div class="organization" *ngIf="enableFieldByPersonSelected()">
+		<div>
+			<div>
+				<label>
+					Nome da Instituição
+				</label>
+				<input type="text" [(ngModel)]="organizationData.name" autofocus>
+			</div>
+			<div>
+				<label>
+					CNPJ
+				</label>
+				<input type="text" [(ngModel)]="organizationData.cnpj">
+			</div>
+		</div>
+		<div>
+			<div>
+				<label>
+					Email da Instituição
+				</label>
+				<input type="text" [(ngModel)]="organizationData.email">
+			</div>
+			<div>
+				<label>
+					Telefone da Instituição
+				</label>
+				<input type="text" [(ngModel)]="organizationData.phone_number">
+			</div>
+		</div>
+	</div>
+	<div class="user">
+		<div>
+			<div>
+				<label>
+					Nome {{ enableFieldByPersonSelected() ? 'do Responsável': 'Completo' }}
+				</label>
+				<input type="text" [(ngModel)]="userRegister.user.name">
+			</div>
+			<div>
+				<label>
+					CPF {{ enableFieldByPersonSelected() ? 'do Responsável': '' }}
+				</label>
+				<input type="text" [(ngModel)]="userRegister.user.cpf">
+			</div>
+			<div>
+				<label>
+					Telefone
+				</label>
+				<input type="text" [(ngModel)]="userRegister.user.phone_number">
+			</div>
+		</div>
+	</div>
+	<div>
+		<h4>Endereço</h4>
+		<div class="address">
+			<div>
+				<label>
+					CEP
+				</label>
+				<input type="text" [(ngModel)]="userRegister.address.zip_code" >
+			</div>
+			<div>
+				<div>
+					<label>
+						Logradouro
+					</label>
+					<input type="text" [(ngModel)]="userRegister.address.street" >
+				</div>
+				<div>
+					<label>
+						Número
+					</label>
+					<input type="text" [(ngModel)]="userRegister.address.address_number" >
+				</div>
+				<div>
+					<label>
+						Bairro
+					</label>
+					<input type="text"[(ngModel)]="userRegister.address.neighborhood" >
+				</div>
+			</div>
+			<div>
+				<div>
+					<label>
+						Cidade
+					</label>
+					<input type="text"[(ngModel)]="userRegister.address.city" >
+				</div>
+				<div>
+					<label>
+						Estado
+					</label>
+					<input type="text"[(ngModel)]="userRegister.address.state" maxlength="2">
+				</div>
+				<div>
+					<label>
+						Complemento (Opcional)
+					</label>
+					<input type="text" [(ngModel)]="userRegister.address.complement" >
+				</div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="enableFieldByPersonSelected()">
+		<h4>Representantes (Opcional)</h4>
+		<div class="representatives" *ngFor="let representative of userRegister.representatives; let i = index" >
+			<div>
+				<div>
+					<label>
+						Nome Completo
+					</label>
+					<input type="text" [(ngModel)]="representative.name">
+				</div>
+				<div>
+					<div>
+						<label>
+							Email
+						</label>
+						<input type="text" [(ngModel)]="representative.email">
+					</div>
+				</div>
+				<div>
+					<button type="button" (click)="removeRepresentative(i)">
+						<i class="uil uil-minus"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div>
+			<button type="button" (click)="addRepresentative()">
+				<span>
+					Adicionar mais representantes
+				</span>
+				<i class="uil uil-plus"></i>
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<button type="submit" (click)="register()">
+				<span>
+					Proseguir
+				</span>
+				<i class="uil uil-angle-right-b"></i>
+			</button>
+		</div>
+	</div>
+</section>

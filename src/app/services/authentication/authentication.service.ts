@@ -42,6 +42,15 @@ export class AuthenticationService implements CanActivate{
 		return true;
 	}
 
+	getProfileType() {
+		const profile = localStorage.getItem('profileType');
+		if(profile === null){
+			this.logout();
+			return
+		}
+		return JSON.parse(profile);
+	}
+
 	async setLocalStorage(userData: any){
 
 		localStorage.setItem('userName', JSON.stringify(userData.userName));
@@ -55,5 +64,10 @@ export class AuthenticationService implements CanActivate{
 		localStorage.removeItem('profile_type');
 		localStorage.removeItem('organization_name');
 		localStorage.removeItem('token');
+	}
+
+	goToHome(data: any){
+		this.setLocalStorage(data);
+		this.router.navigate(['/home']);
 	}
 }

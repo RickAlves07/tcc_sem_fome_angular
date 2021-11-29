@@ -1,3 +1,5 @@
+import { profilesTypes } from 'src/app/shared/utils/constants';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { Router } from '@angular/router';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HomeButton } from 'src/app/models/home-button';
@@ -85,16 +87,27 @@ export class HomeComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private title: Title) {
-			this.title.setTitle('TCC CC - Inicio')
-		}
+		private title: Title,
+		private authenticationService: AuthenticationService
+	) {
+		this.title.setTitle('TCC CC - Inicio')
+	}
 
 	ngOnInit(): void {
 		this.initProfileTypeButtons()
 	}
 
 	initProfileTypeButtons() {
-		this.profileButtons = this.distributorProfileButtons;
+		debugger
+		const profileUser = this.authenticationService.getProfileType();
+
+		const buttonsMap = {
+			[profilesTypes.Donor]: this.donorProfileButtons,
+			[profilesTypes.Transporter]: this.transporterProfileButtons,
+			[profilesTypes.Distributor]: this.distributorProfileButtons,
+		}
+
+		this.profileButtons = buttonsMap[String(profileUser)]
 	}
 
 	goToPage(pagePath: string) {

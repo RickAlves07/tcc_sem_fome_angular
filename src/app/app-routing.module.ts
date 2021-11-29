@@ -15,7 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NewDonationComponent } from './pages/new-donation/new-donation.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { DonationCheckUpComponent } from './pages/donation-check-up/donation-check-up.component';
-import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-type-choice/profile-type-choice.component';
+import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-type-choice.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent},

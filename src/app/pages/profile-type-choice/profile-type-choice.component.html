@@ -1,7 +1,7 @@
 <section>
 	<div>
 		<button *ngFor="let profile of profilesItems" (mouseenter)="changeTextInfos(profile.profileType)">
-			<i [ngClass]="[ profile.iconClass ]"></i>
+			<i [ngClass]="[profile.iconClass]"></i>
 			<span>
 				{{ profile.profileName }}
 			</span>
@@ -17,6 +17,7 @@
 			<span>
 				{{ itemToShow.textButton }}
 			</span>
+			<i class="uil uil-angle-right-b"></i>
 		</button>
 	</div>
 </section>

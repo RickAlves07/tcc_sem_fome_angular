@@ -1,3 +1,4 @@
+import { emptyString } from './../../shared/utils/constants';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,13 +12,22 @@ import { AuthenticationService } from '../authentication/authentication.service'
 export class RegisterService {
 	private url = environment.apiUrl + '/register';
 	public userRegister: UserRegister = new UserRegister();
+
+	public profileData: {
+		profileType: string,
+		profileName: string,
+		iconClass: string,
+	} = {
+		profileType: emptyString,
+		profileName: emptyString,
+		iconClass: emptyString,
+	}
+
 	constructor(
 		private http: HttpClient,
-		private router: Router,
-		private authenticationService: AuthenticationService,
 	) { }
 
-	register() {
-		return this.http.post(`${this.url}`, this.userRegister);
+	register(userRegister: UserRegister) {
+		return this.http.post(`${this.url}`, userRegister);
 	}
 }

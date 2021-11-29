@@ -26,7 +26,6 @@ export class UserRegister {
 	representatives?: [{
 		name: string,
 		email: string,
-		phone_number: string,
 	}]
 
 	constructor(){

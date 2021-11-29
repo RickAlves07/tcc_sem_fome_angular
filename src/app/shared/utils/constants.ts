@@ -1,5 +1,7 @@
 export const emptyString = '';
 
+export const emptyArray = [];
+
 export const DateFormats = {
 	DateOnlyFormatPtBr: "DD/MM/YYYY",
 	DateOnlyDefaultFormat: "YYYY-MM-DD",
@@ -26,7 +28,7 @@ export const profilesTypes = {
 	Distributor: 'distributor',
 }
 
-export const TranslatedProfilesTypes = {
+export const translatedProfilesTypes = {
 	donor: 'Doador',
 	transporter: 'Transportador',
 	distributor: 'Distribuidor',
@@ -38,4 +40,15 @@ export const donationsByStatusToReturnByRouteParam = {
 	Available: 'available',
 	OnTheWay: 'on-the-way',
 	Received: 'received',
+}
+
+export const personType = {
+	JuridicalPerson: 'Pessoa Juridica',
+	NaturalPerson: 'Pessoa Física',
+}
+
+export const profileTypeIcon = {
+	Donor: 'uil uil-box',
+	Transporter: 'uil uil-truck',
+	Distributor: 'uil uil-crockery',
 }
