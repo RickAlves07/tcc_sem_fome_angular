@@ -137,7 +137,6 @@ export class ListDonationsComponent implements OnInit {
 	}
 
 	setActionAndDonationId(listIndex: number, action: string){
-		debugger
 		const actionToSend: actionDonation = {
 			donation_id: this.donationsList[listIndex]?.id,
 			action: action,
