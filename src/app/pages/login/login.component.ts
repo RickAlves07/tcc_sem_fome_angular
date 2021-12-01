@@ -14,10 +14,11 @@ export class LoginComponent implements OnInit {
 
 	public error: string = '';
 
-	userLogin = {
+	public userLogin = {
 		email: '',
 		password: '',
 	}
+
 	constructor(
 		private title: Title,
 		private router: Router,
@@ -30,8 +31,11 @@ export class LoginComponent implements OnInit {
 		}
 	}
 
-
 	ngOnInit(): void {
+	}
+
+	goToRegister() {
+		this.router.navigate(['/register']);
 	}
 
 	login() {

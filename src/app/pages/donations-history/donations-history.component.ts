@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { DonationsService } from 'src/app/services/donations/donations.service';
 
 @Component({
   selector: 'app-donations-history',
@@ -8,13 +10,23 @@ import { Title } from '@angular/platform-browser';
 })
 export class DonationsHistoryComponent implements OnInit {
 
-  constructor(
-	private title: Title) {
-		this.title.setTitle('TCC CC - Inicio')
+	constructor(
+		private authenticationService: AuthenticationService,
+		private title: Title,
+		private donationsService: DonationsService
+	) {
+		this.title.setTitle('TCC CC - Inicio');
+	}
+	donationsList: any = [];
+
+	ngOnInit(): void {
+		this.getDonationsInProgress();
 	}
 
-
-  ngOnInit(): void {
-  }
-
+	getDonationsInProgress(){
+		this.donationsService.getListHistory()
+		.subscribe(data => {
+			this.donationsList = data;
+		})
+	}
 }

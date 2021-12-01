@@ -1,1 +1,35 @@
-<p>header works!</p>
+<header>
+	<div>
+		<div class="row">
+			<div class="user-icon">
+				<i class="uil uil-user"></i>
+			</div>
+			<div class="column">
+				<div>
+					<span>
+						{{userInfo.userName}}
+					</span>
+				</div>
+				<div class="row" *ngIf="userInfo.organizationName !== undefined && userInfo.organizationName !== null">
+					<div>
+						<i [ngClass]="{'uil uil-building': userInfo.organizationName !== ''}"></i>
+					</div>
+					<span>
+						{{userInfo.organizationName ? userInfo.organizationName : '' }}
+					</span>
+				</div>
+				<div class="row">
+					<div>
+						<i [className]="userInfo.profileIcon"></i>
+					</div>
+					<span>
+						{{userInfo.profileType}}
+					</span>
+					<div class="logout" (click)="logout()">
+						<span>Sair <i class="uil uil-signout"></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

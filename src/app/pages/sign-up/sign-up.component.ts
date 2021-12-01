@@ -39,6 +39,10 @@ export class SignUpComponent implements OnInit {
 		}
 	}
 
+	goToLogin() {
+		this.router.navigate(['/login']);
+	}
+
 	validFields() {
 		const minPasswordLength = 3;
 		let isValid: boolean = true;

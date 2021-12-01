@@ -12,7 +12,7 @@
 	--body-color: rgb(255, 226, 226);
 
 	//header
-	--header-height: 3rem;
+	--header-height: 5rem;
 	--header-font-size: 1.25rem;
 
 	//colors
@@ -54,6 +54,7 @@
 
 body
 {
+	padding-top: var(--header-height);
 	font-family: var(--body-font);
 	font-size: var(--normal-font-size);
 	background-color: var(--body-color);
@@ -80,4 +81,55 @@ button
 button:hover
 {
 	background-color: var(--text-color);
+}
+
+strong
+{
+	cursor: pointer;
+}
+
+section
+{
+	width: 100%;
+}
+
+.row
+{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.column
+{
+	display: flex;
+	flex-direction: column;
+	min-width: 25%;
+}
+
+h2, h3, h4
+{
+	margin-bottom: .5rem;
+}
+
+label
+{
+	display: inline-flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+.back-button
+{
+	cursor: pointer;
+	font-size: var(--h1-font-size);
+	text-decoration: none;
+	position: absolute;
+	top: 0;
+	margin-top: 1rem;
 }

@@ -19,19 +19,28 @@ export class DonationsService {
 		return this.http.post(`${this.url}/new`, data );
 	}
 
-	getHistoryList(params: any){
-		return this.http.get(`${this.url}/history`, { params: params });
+	getListHistory(){
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'history'} });
 	}
 
 	getListAvailableToShip(){
-		return this.http.get(`${this.url}/available`);
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'available'} });
 	}
 
 	getListOnTheWayDonations(){
-		return this.http.get(`${this.url}/on-the-way`);
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'on-the-way'} });
 	}
 
 	getListDonationsReceived(){
-		return this.http.get(`${this.url}/received`);
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'received'} });
+	}
+
+	getListDonationsInprogress(){
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'in-progress'} });
 	}
 }

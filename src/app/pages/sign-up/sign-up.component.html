@@ -2,20 +2,20 @@
 	<div>
 		<h3>Cadastro</h3>
 	</div>
-	<div class="row">
-		<div>
+	<div class="column">
+		<div class="column">
 			<label>
 				Email
 			</label>
 			<input type="text" [(ngModel)]="userRegister.user.email" (keyup)="validFields()" autofocus>
 		</div>
-		<div>
+		<div class="column">
 			<label>
 				Digite uma senha
 			</label>
 			<input type="password" [(ngModel)]="userRegister.user.password" (keyup)="validFields()">
 		</div>
-		<div>
+		<div class="column">
 			<label>
 				Confirmar senha
 			</label>
@@ -30,6 +30,11 @@
 				</span>
 				<i></i>
 			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			Ja tem uma conta? Faça o <strong (click)="goToLogin()">Login</strong> aqui!
 		</div>
 	</div>
 </section>

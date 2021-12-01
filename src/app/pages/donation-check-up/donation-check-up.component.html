@@ -1,27 +1,26 @@
+<div class="back-button">
+	<i class="uil uil-angle-left-b"></i>
+	<a [routerLink]="['/home']">
+		Voltar
+	</a>
+</div>
 <section>
-	<div>
-		<i></i>
-		<a [routerLink]="['/home']">
-			Voltar
-		</a>
-	</div>
-
 	<div>
 		<h3>Resumo</h3>
 		<div>
-			<div>
+			<div class="column">
 				<label>
 					Data Agendada
 				</label>
 				<span>{{ newDonation.scheduled_at }}</span>
 			</div>
-			<div>
+			<div class="column">
 				<label>
 					Horário
 				</label>
 				<span>{{ newDonation.scheduled_at }}</span>
 			</div>
-			<div>
+			<div class="column">
 				<label>
 					Peso Total
 				</label>
@@ -30,7 +29,7 @@
 					<span> KG</span>
 				</div>
 			</div>
-			<div>
+			<div class="column">
 				<label>
 					Total de Itens
 				</label>
@@ -44,13 +43,13 @@
 			<div>
 				<div>
 					<i></i>
-					<span>{{ distributorData.name }}</span>
+					<span>{{ distributorData?.name }}</span>
 				</div>
 				<div>
-					<span>CNPJ: {{ distributorData.name }}</span>
-					<span>Email: {{ distributorData.email }}</span>
-					<span>Contato: {{ distributorData.phone_number }}</span>
-					<span>Responsável: {{ distributorData.organization_owner_user.name }}</span>
+					<span>CNPJ: {{ distributorData?.name }}</span>
+					<span>Email: {{ distributorData?.email }}</span>
+					<span>Contato: {{ distributorData?.phone_number }}</span>
+					<span>Responsável: {{ distributorData?.organization_owner_user?.name }}</span>
 				</div>
 			</div>
 		</div>

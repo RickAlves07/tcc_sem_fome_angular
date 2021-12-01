@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { DonationsService } from './../../services/donations/donations.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { DonationsService } from 'src/app/services/donations/donations.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-donations-received',
-  templateUrl: './donations-received.component.html',
-  styleUrls: ['./donations-received.component.scss']
+  selector: 'app-donations-in-progress',
+  templateUrl: './donations-in-progress.component.html',
+  styleUrls: ['./donations-in-progress.component.scss']
 })
-export class DonationsReceivedComponent implements OnInit {
-
+export class DonationsInProgressComponent implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
@@ -22,7 +21,7 @@ export class DonationsReceivedComponent implements OnInit {
 	}
 
 	getDonationsInProgress(){
-		this.donationsService.getListDonationsReceived()
+		this.donationsService.getListDonationsInprogress()
 		.subscribe(data => {
 			this.donationsList = data;
 		})

@@ -3,13 +3,13 @@
 		<h3>Login</h3>
 	</div>
 	<div class="row">
-		<div>
+		<div class="column">
 			<label>
 				Email
 			</label>
 			<input type="text" [(ngModel)]="userLogin.email" autofocus>
 		</div>
-		<div>
+		<div class="column">
 			<label>
 				Senha
 			</label>
@@ -22,8 +22,12 @@
 				<span>
 					Login
 				</span>
-				<i></i>
 			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			Não tem uma conta? <strong (click)="goToRegister()">Cadastre-se</strong> aqui!
 		</div>
 	</div>
 </section>

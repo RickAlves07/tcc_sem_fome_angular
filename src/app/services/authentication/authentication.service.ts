@@ -1,5 +1,5 @@
-import { emptyString } from './../../shared/utils/constants';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { emptyString, profilesTypes, profileTypeIcon, translatedProfilesTypes } from './../../shared/utils/constants';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -11,9 +11,16 @@ export class AuthenticationService implements CanActivate{
 
 	private readonly headerPostOptions: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 	private url = environment.apiUrl + '/login';
+
+	cachedRequests: Array<HttpRequest<any>> = [];
 	constructor(
 		private http: HttpClient,
 		private router: Router,) {
+	}
+
+
+	public collectFailedRequest(request: any): void {
+		this.cachedRequests.push(request);
 	}
 
 	async canActivate(route: any, state: any) {
@@ -31,7 +38,8 @@ export class AuthenticationService implements CanActivate{
 	}
 
 	logout() {
-		this.removeLocalStorage()
+		this.removeLocalStorage();
+		this.router.navigate(['/']);
 	}
 
 	checkLoggedIn() {
@@ -42,21 +50,51 @@ export class AuthenticationService implements CanActivate{
 		return true;
 	}
 
+	getHeaderDataInfo()
+	{
+		return {
+			userName: localStorage.getItem('userName'),
+			organizationName: localStorage.getItem('organizationName'),
+			profileType: localStorage.getItem('profileTypePtBr'),
+			profileIcon: localStorage.getItem('profileIcon'),
+		}
+	}
+
 	getProfileType() {
 		const profile = localStorage.getItem('profileType');
+		let profileString : string = emptyString;
 		if(profile === null){
+			this.logout();
+		} else {
+			profileString = profile;
+		}
+		return profileString;
+	}
+
+	getToken() {
+		const token = localStorage.getItem('token');
+		if(token === null){
 			this.logout();
 			return
 		}
-		return JSON.parse(profile);
+		return token;
 	}
 
-	async setLocalStorage(userData: any){
+	async setLocalStorage(userData: any) : Promise<void>{
+		const icon = this.getProfileIcon(userData.profileType);
+		const profile = this.getProfileTypePortuguese(userData.profileType);
 
-		localStorage.setItem('userName', JSON.stringify(userData.userName));
-		localStorage.setItem('profileType', JSON.stringify(userData.profileType));
-		localStorage.setItem('organizationName', JSON.stringify(userData.organizationName));
-		localStorage.setItem('token', JSON.stringify(userData.token));
+		localStorage.setItem('userName', userData.userName);
+		localStorage.setItem('profileType', userData.profileType);
+		localStorage.setItem('token', userData.token);
+		localStorage.setItem('profileIcon', icon);
+		localStorage.setItem('profileTypePtBr', profile);
+		this.checkIfSetOrganizationInStorage(userData.organizationName);
+	}
+
+	checkIfSetOrganizationInStorage(organizationName: string)
+	{
+		organizationName? localStorage.setItem('organizationName', organizationName) : false ;
 	}
 
 	private removeLocalStorage(){
@@ -64,6 +102,47 @@ export class AuthenticationService implements CanActivate{
 		localStorage.removeItem('profile_type');
 		localStorage.removeItem('organization_name');
 		localStorage.removeItem('token');
+		localStorage.removeItem('profileIcon');
+	}
+
+	getProfileIcon(profile: string){
+		let iconProfile = emptyString;
+
+		switch(profile){
+			case profilesTypes.Donor:
+				iconProfile = profileTypeIcon.Donor;
+				break;
+			case profilesTypes.Transporter:
+				iconProfile = profileTypeIcon.Transporter;
+				break;
+			case profilesTypes.Distributor:
+				iconProfile = profileTypeIcon.Transporter;
+				break;
+			default:
+				iconProfile = emptyString;
+				break;
+		}
+		return iconProfile;
+	}
+
+	getProfileTypePortuguese(profile: string){
+		let profileText = emptyString;
+
+		switch(profile){
+			case profilesTypes.Donor:
+				profileText = translatedProfilesTypes.donor;
+				break;
+			case profilesTypes.Transporter:
+				profileText = translatedProfilesTypes.transporter;
+				break;
+			case profilesTypes.Distributor:
+				profileText = translatedProfilesTypes.distributor;
+				break;
+			default:
+				profileText = emptyString;
+				break;
+		}
+		return profileText;
 	}
 
 	goToHome(data: any){

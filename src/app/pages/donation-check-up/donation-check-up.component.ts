@@ -21,7 +21,7 @@ export class DonationCheckUpComponent implements OnInit {
 		private router: Router,
 		private donationsService: DonationsService,
 	) {
-		this.getDonationData()
+		this.getDonationData();
 		this.title.setTitle('TCC CC - Inicio')
 	}
 
@@ -31,11 +31,13 @@ export class DonationCheckUpComponent implements OnInit {
 
 	getDonationData(){
 		this.newDonation = {...this.donationsService.newDonation}
+		this.distributorData = {...this.donationsService.distributorData}
 	}
+
 
 	confirmDonation() {
 		this.donationsService.saveNewDonation(this.newDonation)
-		.subscribe(data =>{
+		.subscribe(data => {
 			this.router.navigate(['/home']);
 		})
 	}

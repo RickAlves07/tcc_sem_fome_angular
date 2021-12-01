@@ -1,59 +1,72 @@
-<div class="donation">
+<div *ngFor="let donation of donationsList; let i = index" class="donation" class="donation-item">
 	<div>
-		<label>
-			Status
-		</label>
-		<span>
-
-		</span>
+		<div class="column">
+			<label>
+				Status:
+			</label>
+			<span>
+				{{ donation?.status }}
+			</span>
+		</div>
+		<div class="column">
+			<label>
+				Data de Doação
+			</label>
+			<span>
+				{{ donation?.createdAt }}
+			</span>
+		</div>
+		<div class="column">
+			<label>
+				Data Agendada
+			</label>
+			<span>
+				{{ donation?.scheduled_at }}
+			</span>
+		</div>
+		<div class="column">
+			<label>
+				Peso Total
+			</label>
+			<span>
+				{{ donation?.total_weight }}
+			</span>
+		</div>
+		<div class="column">
+			<label>
+				Total de items
+			</label>
+			<span>
+				{{ donation?.total_items }}
+			</span>
+		</div>
+	</div>
+	<div class="shipment-info">
+		<div>
+			<app-shipment-timeline></app-shipment-timeline>
+		</div>
 	</div>
 	<div>
-		<label>
-			Total de items doados
-		</label>
-		<span>
-
-		</span>
+		<div class="profile-info">
+			<div>
+				<app-shipment-timeline></app-shipment-timeline>
+			</div>
+		</div>
+		<div class="profile-info">
+			<div>
+				<app-shipment-timeline></app-shipment-timeline>
+			</div>
+		</div>
 	</div>
-	<div>
-		<label>
-			Peso Total
-		</label>
-		<span>
-
-		</span>
-	</div>
-	<div>
-		<label>
-			Data de Doação
-		</label>
-		<span>
-
-		</span>
-	</div>
-	<div>
-		<label>
-			Data de Vencimento
-		</label>
-		<span></span>
-	</div>
-	<div>
-		<span>Agendado para:</span>
+	<div class="provisions">
+		<app-list-provisions [provisionsList]="donation?.donation_provisions"></app-list-provisions>
 	</div>
 	<div>
 		<label>
 			Comentários
 		</label>
 		<span>
-
+			{{ donation?.comments }}
 		</span>
-	</div>
-	<div class="provisions">
-		<app-list-provisions></app-list-provisions>
-	</div>
-	<div class="shipment-info">
-		<div>
-			<app-shipment-timeline></app-shipment-timeline>
-		</div>
 	</div>
 </div>

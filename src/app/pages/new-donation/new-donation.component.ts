@@ -19,6 +19,12 @@ export class NewDonationComponent implements OnInit {
 	calendarDateString: string[] = [emptyString];
 	distributorsList: any;
 	distributorSelected: any;
+	disableProceedButton: boolean = true;
+
+	schedule = {
+		date: emptyString,
+		time: emptyString,
+	}
 
 
 	constructor (
@@ -48,9 +54,13 @@ export class NewDonationComponent implements OnInit {
 
 	async donationIsValid() {
 		await this.calcProvisionTotalWeight();
-		const datesIsValid = this.validateCalendarDates();
+		const datesIsValid = this.validateProvisionExpirationDates();
 		const dataIsValid = this.validateProvisionsData()
-		return ( datesIsValid && dataIsValid)
+		const organizationValid = (this.donation.organization_distributor_id !== undefined ? true : false);
+		const scheduledIsValid = this.validateScheduledDateTime();
+		const allValid = (datesIsValid && dataIsValid && organizationValid && scheduledIsValid);
+		this.disableProceedButton = allValid ? false : true;
+		return allValid;
 	}
 
 	validateProvisionsData(){
@@ -71,18 +81,35 @@ export class NewDonationComponent implements OnInit {
 		return isValid
 	}
 
-	validateCalendarDates(){
+	validateScheduledDateTime()
+	{
+		return (this.donation.scheduled_at !== null && this.donation.scheduled_at > new Date() ? true : false)
+	}
+
+	setScheduleDateTime(){
+		if(this.schedule.date !== emptyString && this.schedule.time !== emptyString){
+			const date = `${this.schedule.date} ${this.schedule.time}`;
+			this.donation.scheduled_at = new Date(date);
+		}
+	}
+
+	validateProvisionExpirationDates(){
 		const isValid = this.calendarDateString.every(date => date !== emptyString);
 
 		if(isValid){
-			this.fillProvisionExpirationDate(this.calendarDateString);
+			this.setProvisionExpirationDate(this.calendarDateString);
 		}
-		return isValid
+		return isValid;
 	}
 
-	fillProvisionExpirationDate(dates: string[]){
+	removeDonationItem(index: number){
+		this.provisions.splice(index, 1);
+		this.calendarDateString.splice(index, 1);
+	}
+
+	setProvisionExpirationDate(dates: string[]){
 		for(let index in dates) {
-			this.provisions[index].expiration_date = dates[index];
+			this.provisions[index].expiration_date = new Date(dates[index]);
 		}
 	}
 
@@ -95,6 +122,15 @@ export class NewDonationComponent implements OnInit {
 	goToCheckUp(){
 		this.donationsService.newDonation = { ...this.donation, provisions: this.provisions}
 		this.router.navigateByUrl('/donations/check-up');
+	}
+
+	setDonationDistributorId(){
+		this.donation.organization_distributor_id = this.distributorSelected.id;
+		this.setDonationData();
+	}
+
+	setDonationData(){
+		this.donationsService.distributorData = {...this.distributorSelected};
 	}
 
 	async calcProvisionTotalWeight(){

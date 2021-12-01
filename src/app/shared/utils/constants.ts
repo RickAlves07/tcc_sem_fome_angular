@@ -11,15 +11,41 @@ export const DateFormats = {
 }
 
 export const donationPackagesStatus = {
-	WaitingATransporter: 'waiting a transporter',
-	WaitingForPickup:'waiting for pickup',
-	OnDeliveryRoute: 'on delivery route',
-	InTransport:'in transport',
-	Delivered: 'delivered',
-	Received: 'received',
-	ReturningToDonor: 'returning to donor',
-	Returned: 'returned',
-	Canceled: 'canceled',
+	WaitingATransporter: 'Aguardando um Transportador',
+	WaitingForPickup: 'Aguardando Coleta',
+	OnDeliveryRoute: 'Em rota de Entrega',
+	Delivered: 'Entregue',
+	Received: 'Recebido',
+	ReturningToDonor: 'Retornado ao Doador',
+	Returned: 'Devolvido',
+	Canceled: 'Cancelado',
+}
+
+export const donationsByStatusToReturnByRouteParam = {
+	'in-progress': [
+		donationPackagesStatus.WaitingATransporter,
+		donationPackagesStatus.WaitingForPickup,
+		donationPackagesStatus.OnDeliveryRoute,
+		donationPackagesStatus.ReturningToDonor,
+	],
+	'history': [
+		donationPackagesStatus.Delivered,
+		donationPackagesStatus.Received,
+		donationPackagesStatus.Returned,
+		donationPackagesStatus.Canceled,
+	],
+	'available': [
+		donationPackagesStatus.WaitingATransporter,
+	],
+	'on-the-way': [
+		donationPackagesStatus.WaitingATransporter,
+		donationPackagesStatus.WaitingForPickup,
+		donationPackagesStatus.OnDeliveryRoute,
+	],
+	'Recebido': [
+		donationPackagesStatus.Delivered,
+		donationPackagesStatus.Received,
+	],
 }
 
 export const profilesTypes = {
@@ -34,14 +60,6 @@ export const translatedProfilesTypes = {
 	distributor: 'Distribuidor',
 }
 
-export const donationsByStatusToReturnByRouteParam = {
-	InProgress: 'in-progress',
-	History: 'history',
-	Available: 'available',
-	OnTheWay: 'on-the-way',
-	Received: 'received',
-}
-
 export const personType = {
 	JuridicalPerson: 'Pessoa Juridica',
 	NaturalPerson: 'Pessoa Física',
@@ -51,4 +69,16 @@ export const profileTypeIcon = {
 	Donor: 'uil uil-box',
 	Transporter: 'uil uil-truck',
 	Distributor: 'uil uil-crockery',
+}
+
+export const actionsDonationMap = {
+	'confirmCollected': 'confirm-collected',
+	'confirmReceived': 'confirm-received',
+	'confirmDelivered': 'confirm-delivered',
+	'confirmReturned': 'confirm-returned',
+	'confirmDonateAgain': 'confirm-donate-again',
+	'cancelDonation': 'cancel-donation',
+	'acceptTransport': 'accept-transport',
+	'cancelTransport': 'cancel-transport',
+	'cancelTransportReturn': 'cancel-transport-return',
 }

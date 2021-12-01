@@ -1,5 +1,4 @@
 import { UserRegister } from 'src/app/models/user-register';
-import { CompleteRegistrationComponent } from './pages/complete-registration/complete-registration/complete-registration.component';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ShipmentsHistoryComponent } from './pages/shipments-history/shipments-history.component';
@@ -16,6 +15,8 @@ import { NewDonationComponent } from './pages/new-donation/new-donation.componen
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { DonationCheckUpComponent } from './pages/donation-check-up/donation-check-up.component';
 import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-type-choice.component';
+import { DonationsInProgressComponent } from './pages/donations-in-progress/donations-in-progress.component';
+import { CompleteRegistrationComponent } from './pages/complete-registration/complete-registration.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
 	{ path: 'home', component: HomeComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/new', component: NewDonationComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/check-up', component: DonationCheckUpComponent, canActivate: [AuthenticationService] },
+	{ path: 'donations/in-progress', component: DonationsInProgressComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/available', component: AvailableDonationsComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/history', component: DonationsHistoryComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/received', component: DonationsReceivedComponent, canActivate: [AuthenticationService] },

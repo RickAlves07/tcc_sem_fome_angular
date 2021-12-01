@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserRegister } from 'src/app/models/user-register';
 import { RegisterService } from 'src/app/services/register-service/register.service';
+import { ButtonsProfileChoiceData } from 'src/app/models/button-profile-choice-data';
 
 @Component({
   selector: 'app-profile-type-choice',
@@ -12,7 +13,7 @@ import { RegisterService } from 'src/app/services/register-service/register.serv
   styleUrls: ['./profile-type-choice.component.scss']
 })
 export class ProfileTypeChoiceComponent implements OnInit {
-	readonly profilesItems: Array<ButtonsData> = [
+	readonly profilesItems: Array<ButtonsProfileChoiceData> = [
 		{
 			iconClass: profileTypeIcon.Donor,
 			profileType: profilesTypes.Donor,
@@ -35,7 +36,7 @@ export class ProfileTypeChoiceComponent implements OnInit {
 			textButton: 'Quero distribuir os alimentos!',
 		},
 	];
-	public itemToShow: ButtonsData = this.profilesItems[0];
+	public itemToShow: ButtonsProfileChoiceData = this.profilesItems[0];
 
 	public userRegister: UserRegister = new UserRegister();
 
@@ -44,17 +45,12 @@ export class ProfileTypeChoiceComponent implements OnInit {
 		private router: Router,
 		private registerService: RegisterService,
 	) {
-		this.userRegister = { ...this.registerService.userRegister };
-
-		if(this.userRegister.user.email === emptyString) {
-			this.router.navigate(['register']);
-		}
-
 		this.title.setTitle('TCC CC - Escolha seu Perfil');
 	}
 
 	ngOnInit(): void {
-		this.changeTextInfos(profilesTypes.Donor)
+		this.getRegistrationDataType();
+		this.verifyIfNeededReturnToFirstPage();
 	}
 
 	changeTextInfos(profileType: string){
@@ -64,22 +60,24 @@ export class ProfileTypeChoiceComponent implements OnInit {
 		}
 	}
 
+	verifyIfNeededReturnToFirstPage(){
+		if(this.userRegister.user.email === emptyString) {
+			this.router.navigate(['register']);
+		}
+	}
+
 	goToCompleteRegistration(profileType: string) {
 		this.userRegister.user.profile_type = profileType;
 		this.setRegistrationDataType();
-		this.router.navigate(['/register/complete-registration'])
+		this.router.navigate(['/register/complete-registration']);
 	}
 
 	setRegistrationDataType(){
 		this.registerService.userRegister = { ...this.userRegister };
 		this.registerService.profileData = { ...this.itemToShow };
 	}
-}
 
-type ButtonsData = {
-	profileType: string,
-	profileName: string,
-	iconClass: string,
-	description: string,
-	textButton: string,
+	getRegistrationDataType(){
+		this.userRegister =  {...this.registerService.userRegister };
+	}
 }

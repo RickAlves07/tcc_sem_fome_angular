@@ -1,23 +1,19 @@
+<div (click)="backToProfileChoice()" class="back-button">
+	<i class="uil uil-angle-left-b"></i>
+	<i [ngClass]="[profileData.iconClass]"></i>
+	<a>{{ profileData.profileName }}</a>
+</div>
 <section>
-	<div>
-		<div>
-			<i class="uil uil-angle-left-b"></i>
-		</div>
-		<div>
-			<i [ngClass]="[profileData.iconClass]"></i>
-			<h3>{{ profileData.profileName }}</h3>
-		</div>
-	</div>
 	<h4>Dados do {{ profileData.profileName }}</h4>
 	<div>
 		<div>
-			<ng-select [clearable]="false" [(ngModel)]="personSelected" [items]="personOptions">
+			<ng-select [clearable]="false" [(ngModel)]="personSelected" [items]="personOptions" (change)="clearDataByPersonType()">
 			</ng-select>
 		</div>
 	</div>
 	<div class="organization" *ngIf="enableFieldByPersonSelected()">
-		<div>
-			<div>
+		<div class="row">
+			<div class="">
 				<label>
 					Nome da Instituição
 				</label>
@@ -30,7 +26,7 @@
 				<input type="text" [(ngModel)]="organizationData.cnpj">
 			</div>
 		</div>
-		<div>
+		<div class="row">
 			<div>
 				<label>
 					Email da Instituição
@@ -46,7 +42,7 @@
 		</div>
 	</div>
 	<div class="user">
-		<div>
+		<div class="row">
 			<div>
 				<label>
 					Nome {{ enableFieldByPersonSelected() ? 'do Responsável': 'Completo' }}
@@ -70,13 +66,13 @@
 	<div>
 		<h4>Endereço</h4>
 		<div class="address">
-			<div>
+			<div class="row">
 				<label>
 					CEP
 				</label>
 				<input type="text" [(ngModel)]="userRegister.address.zip_code" >
 			</div>
-			<div>
+			<div class="row">
 				<div>
 					<label>
 						Logradouro
@@ -96,7 +92,7 @@
 					<input type="text"[(ngModel)]="userRegister.address.neighborhood" >
 				</div>
 			</div>
-			<div>
+			<div class="row">
 				<div>
 					<label>
 						Cidade
@@ -121,7 +117,7 @@
 	<div *ngIf="enableFieldByPersonSelected()">
 		<h4>Representantes (Opcional)</h4>
 		<div class="representatives" *ngFor="let representative of userRegister.representatives; let i = index" >
-			<div>
+			<div class="row">
 				<div>
 					<label>
 						Nome Completo
@@ -129,12 +125,10 @@
 					<input type="text" [(ngModel)]="representative.name">
 				</div>
 				<div>
-					<div>
-						<label>
-							Email
-						</label>
-						<input type="text" [(ngModel)]="representative.email">
-					</div>
+					<label>
+						Email
+					</label>
+					<input type="text" [(ngModel)]="representative.email">
 				</div>
 				<div>
 					<button type="button" (click)="removeRepresentative(i)">

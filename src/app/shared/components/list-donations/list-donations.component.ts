@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { donationPackagesStatus } from '../../utils/constants';
 
 @Component({
   selector: 'app-list-donations',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListDonationsComponent implements OnInit {
 
-  constructor() { }
+	@Input("donationsList") donationsList: any = [{}];
 
-  ngOnInit(): void {
-  }
+	constructor() { }
 
+	ngOnInit(): void {
+	}
+
+	canConfirmCollected(listIndex: number)
+	{
+		const status = this.donationsList[listIndex]?.status;
+		return ((
+			status !== donationPackagesStatus.WaitingForPickup &&
+			status !== donationPackagesStatus.OnDeliveryRoute &&
+			status === donationPackagesStatus.OnDeliveryRoute
+		 ) ? true : false)
+	}
 }

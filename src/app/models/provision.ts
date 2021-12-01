@@ -6,7 +6,7 @@ export class Provision {
 	unit_weight: number;
 	total_weight: number;
 	donation_package_id?: number;
-	expiration_date: string;
+	expiration_date: Date;
 	created_at?: Date;
 	updated_at?: Date;
 
@@ -15,6 +15,6 @@ export class Provision {
 		this.quantity = 0;
 		this.unit_weight = 0;
 		this.total_weight = 0;
-		this.expiration_date = new Date().toISOString();
+		this.expiration_date = new Date();
 	}
 };

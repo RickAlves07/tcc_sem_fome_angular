@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NewDonationComponent } from './pages/new-donation/new-donation.component';
 import { DonationsHistoryComponent } from './pages/donations-history/donations-history.component';
 import { ShipmentsHistoryComponent } from './pages/shipments-history/shipments-history.component';
@@ -25,10 +25,10 @@ import { DonationCheckUpComponent } from './pages/donation-check-up/donation-che
 import { ShipmentTimelineComponent } from './shared/components/shipment-timeline/shipment-timeline.component';
 import { LoginComponent } from './pages/login/login.component';
 import { JwtInterceptor } from './middleware/jwt-interceptor';
-import { ErrorInterceptor } from './middleware/error-interceptor';
-import { CompleteRegistrationComponent } from './pages/complete-registration/complete-registration/complete-registration.component';
 import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-type-choice.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DonationsInProgressComponent } from './pages/donations-in-progress/donations-in-progress.component';
+import { CompleteRegistrationComponent } from './pages/complete-registration/complete-registration.component';
 
 
 @NgModule({
@@ -55,6 +55,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 		ShipmentTimelineComponent,
 		ProfileTypeChoiceComponent,
 		CompleteRegistrationComponent,
+		DonationsInProgressComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -65,9 +66,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
 		NgSelectModule,
 	],
 	providers: [
-		JwtInterceptor,
-		ErrorInterceptor
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: JwtInterceptor,
+			multi: true,
+		}
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
 export class AppModule { }

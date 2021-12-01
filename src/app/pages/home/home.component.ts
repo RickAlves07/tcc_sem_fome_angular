@@ -98,7 +98,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	initProfileTypeButtons() {
-		debugger
 		const profileUser = this.authenticationService.getProfileType();
 
 		const buttonsMap = {

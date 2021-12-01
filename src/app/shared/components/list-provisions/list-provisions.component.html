@@ -1,26 +1,16 @@
 <div class="provision-item">
-	<div>
-		<label>
-			Descrição do alimento
-		</label>
-		<span></span>
-	</div>
-	<div>
-		<label>
-			Peso
-		</label>
-		<span></span>
-	</div>
-	<div>
-		<label>
-			Quantidade
-		</label>
-		<span></span>
-	</div>
-	<div>
-		<label>
-			Data de validade
-		</label>
-		<span></span>
-	</div>
+	<table>
+		<tr>
+			<th>Descrição do alimento</th>
+			<th>Peso</th>
+			<th>Quantidade</th>
+			<th>Data de validade</th>
+		</tr>
+		<tr *ngFor="let provision of provisionsList" >
+			<td>{{ provision?.description }}</td>
+			<td>{{ provision?.total_weight }}</td>
+			<td>{{ provision?.quantity }}</td>
+			<td>{{ provision?.expiration_date }}</td>
+		</tr>
+	</table>
 </div>

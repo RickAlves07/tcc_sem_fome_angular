@@ -1,11 +1,10 @@
-import { emptyArray } from './../../../shared/utils/constants';
-import { AuthenticationService } from './../../../services/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UserRegister } from 'src/app/models/user-register';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { RegisterService } from 'src/app/services/register-service/register.service';
-import { emptyString, personType } from 'src/app/shared/utils/constants';
+import { emptyArray, emptyString, personType } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-complete-registration',
@@ -40,12 +39,20 @@ export class CompleteRegistrationComponent implements OnInit {
 		private authenticationService: AuthenticationService,
 	) {
 		this.getRegistrationDataType();
+		this.verifyIfNeededReturnToFirstPage();
 
+		this.personSelected = this.personOptions[0];
+		this.title.setTitle('TCC CC - Complete seu Cadastro');
+	}
+
+	verifyIfNeededReturnToFirstPage(){
 		if(this.userRegister.user.profile_type === emptyString) {
 			this.router.navigate(['register']);
 		}
-		this.personSelected = this.personOptions[0];
-		this.title.setTitle('TCC CC - Complete seu Cadastro');
+	}
+
+	backToProfileChoice(){
+		this.router.navigate(['register/profile-type-choice']);
 	}
 
 	getRegistrationDataType(){
@@ -86,6 +93,7 @@ export class CompleteRegistrationComponent implements OnInit {
 	}
 
 	private validateRegister() {
+
 		const userDataIsValid = this.validateDataFields(this.userRegister.user);
 		const addressDataIsValid = this.validateDataFields(this.userRegister.address);
 		const organizations = this.organizationData ? this.validateDataFields(this.organizationData) : true;
@@ -108,6 +116,7 @@ export class CompleteRegistrationComponent implements OnInit {
 
 	register() {
 		if(this.validateRegister()){
+			
 			this.clearDataByPersonType();
 			this.registerService.register(this.userRegister)
 			.subscribe(data => {

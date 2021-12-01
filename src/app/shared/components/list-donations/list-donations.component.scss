@@ -1,0 +1,14 @@
+.donation-item
+{
+	font-family: var(--body-font);
+	border: solid 2px var(--text-color);
+	padding: .5rem;
+	border-radius: var(--border-radius-default);
+	margin-bottom: 1rem;
+	max-width: 400rem;
+}
+
+// .donation-item:last-child
+// {
+// 	margin-bottom: 0rem;
+// }

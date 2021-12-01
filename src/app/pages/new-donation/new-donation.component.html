@@ -1,82 +1,93 @@
+<div class="back-button">
+	<i class="uil uil-angle-left-b"></i>
+	<a [routerLink]="['/home']">
+		Voltar
+	</a>
+</div>
 <section>
-	<div>
-		<i></i>
-		<a [routerLink]="['/home']">
-			Voltar
-		</a>
-	</div>
-	<h4>Quais alimentos serão doados?</h4>
-	<div *ngFor="let provision of provisions; let i = index" class="row">
-		<div>
-			<label>
-				Descrição do alimento
-			</label>
-			<input type="text" [(ngModel)]="provision.description" autofocus (keyup)="donationIsValid()">
+	<div class="block">
+		<h4>Quais alimentos serão doados?</h4>
+		<div *ngFor="let provision of provisions; let i = index" class="row">
+			<div class="column">
+				<label>
+					Descrição do alimento
+				</label>
+				<input type="text" [(ngModel)]="provision.description" autofocus (keyup)="donationIsValid()">
+			</div>
+			<div class="column">
+				<label>
+					Peso (Item)
+				</label>
+				<input type="number" [(ngModel)]="provision.unit_weight" (keyup)="donationIsValid()"><span>Kg</span>
+			</div>
+			<div class="column">
+				<label>
+					Quantidade
+				</label>
+				<input type="number" [(ngModel)]="provision.quantity" (keyup)="donationIsValid()">
+			</div>
+			<div class="column">
+				<label>
+					Data de validade
+				</label>
+				<input type="date" [(ngModel)]="calendarDateString[i]" (keyup)="donationIsValid()">
+			</div>
+			<div>
+				<button (click)="removeDonationItem(i)" >
+					<i class="uil uil-minus"></i>
+				</button>
+			</div>
 		</div>
-		<div>
-			<label>
-				Peso (Item)
-			</label>
-			<input type="number" [(ngModel)]="provision.unit_weight" (keyup)="donationIsValid()"><span>Kg</span>
-		</div>
-		<div>
-			<label>
-				Quantidade
-			</label>
-			<input type="number" [(ngModel)]="provision.quantity" (keyup)="donationIsValid()">
-		</div>
-		<div>
-			<label>
-				Data de validade
-			</label>
-			<input type="date" [(ngModel)]="calendarDateString[i]" (keyup)="donationIsValid()">
-		</div>
-	</div>
-	<div class="row">
-		<div>
-			<button (click)="addNewProvision()">
+		<div class="row">
+			<div>
+				<button (click)="addNewProvision()">
+					<span>
+						Adicionar mais um item
+					</span>
+				</button>
+			</div>
+			<div>
 				<span>
-					Adicionar mais um item
+					Total de Items: {{ donation.total_items }}
 				</span>
-			</button>
-		</div>
-		<div>
-			<span>
-				Total de Items: {{ donation.total_items }}
-			</span>
-			<span>
-				Peso Total: {{ donation.total_weight }} Kg
-			</span>
-		</div>
-	</div>
-	<h4>Quail o melhor horário para a coleta?</h4>
-	<div *ngFor="let provision of provisions; let i = index" class="row">
-		<div>
-			<label>
-				Data
-			</label>
-			<input type="date" [(ngModel)]="donation.scheduled_at" (keyup)="donationIsValid()">
-		</div>
-		<div>
-			<label>
-				Horário
-			</label>
-			<input type="time" [(ngModel)]="donation.scheduled_at" (keyup)="donationIsValid()">
-		</div>
-	</div>
-	<h4>Para qual instituição deseja realiza sua doação?</h4>
-	<div>
-		<ng-select [clearable]="false" [(ngModel)]="distributorSelected" [items]="distributorsList" bindLabel="name" bindValue="id">
-		</ng-select>
-	</div>
-	<div class="row">
-		<div>
-			<button (click)="confirmDonation()" >
 				<span>
-					Prosseguir
+					Peso Total: {{ donation.total_weight }} Kg
 				</span>
-				<i></i>
-			</button>
+			</div>
+		</div>
+	</div>
+	<div class="block">
+		<h4>Qual o melhor horário para a coleta?</h4>
+		<div class="row">
+			<div class="column">
+				<label>
+					Data
+				</label>
+				<input type="date" [(ngModel)]="schedule.date" (change)="setScheduleDateTime(); donationIsValid()">
+			</div>
+			<div class="column">
+				<label>
+					Horário
+				</label>
+				<input type="time" [(ngModel)]="schedule.time" (change)="setScheduleDateTime(); donationIsValid()">
+			</div>
+		</div>
+	</div>
+	<div class="block">
+		<h4>Para qual instituição deseja realizar sua doação?</h4>
+		<div>
+			<ng-select [clearable]="false" [(ngModel)]="distributorSelected" [items]="distributorsList" bindLabel="name" (change)="setDonationDistributorId()">
+			</ng-select>
+		</div>
+		<div class="row">
+			<div>
+				<button (click)="confirmDonation()" [disabled]="disableProceedButton">
+					<span>
+						Prosseguir
+					</span>
+					<i></i>
+				</button>
+			</div>
 		</div>
 	</div>
 </section>
