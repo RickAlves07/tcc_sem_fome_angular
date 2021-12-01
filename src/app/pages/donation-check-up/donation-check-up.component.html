@@ -5,27 +5,27 @@
 	</a>
 </div>
 <section>
-	<div>
+	<div class="box">
 		<h3>Resumo</h3>
 		<div>
 			<div class="column">
 				<label>
 					Data Agendada
 				</label>
-				<span>{{ newDonation.scheduled_at }}</span>
+				<span>{{ convertDate(newDonation?.scheduled_at) }}</span>
 			</div>
 			<div class="column">
 				<label>
 					Horário
 				</label>
-				<span>{{ newDonation.scheduled_at }}</span>
+				<span>{{ convertTime(newDonation?.scheduled_at) }}</span>
 			</div>
 			<div class="column">
 				<label>
 					Peso Total
 				</label>
 				<div>
-					<span>{{ newDonation.total_weight }}</span>
+					<span>{{ newDonation?.total_weight }}</span>
 					<span> KG</span>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 				<label>
 					Total de Itens
 				</label>
-				<span>{{ newDonation.total_items }}</span>
+				<span>{{ newDonation?.total_items }}</span>
 			</div>
 		</div>
 		<div>
@@ -57,7 +57,7 @@
 			<label>
 				Itens Doados
 			</label>
-			<!-- <app-table []="newDonation.provisions"></app-table> -->
+			<!-- <app-table []="newDonation?.provisions"></app-table> -->
 		</div>
 		<div>
 			<label>

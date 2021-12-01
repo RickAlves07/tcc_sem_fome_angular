@@ -7,7 +7,8 @@
 			<label>
 				Email
 			</label>
-			<input type="text" [(ngModel)]="userRegister.user.email" (keyup)="validFields()" autofocus>
+			<input type="text" [(ngModel)]="userRegister.user.email" (keyup)="validFields(); compareEmail()" autofocus>
+			<span *ngIf="showAlreadyInUse" >Esse email já esta em uso.</span>
 		</div>
 		<div class="column">
 			<label>
@@ -24,7 +25,7 @@
 	</div>
 	<div class="row">
 		<div>
-			<button type="submit" (click)="goToProfileTypeChoice()" [disabled]="disableRegisterButton" class="action">
+			<button type="submit" (click)="checkEmail()" [disabled]="disableRegisterButton" class="action">
 				<span>
 					Confirmar
 				</span>

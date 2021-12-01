@@ -92,13 +92,12 @@ export class CompleteRegistrationComponent implements OnInit {
 		}
 	}
 
-	private validateRegister() {
+	validateRegister() {
 
 		const userDataIsValid = this.validateDataFields(this.userRegister.user);
 		const addressDataIsValid = this.validateDataFields(this.userRegister.address);
-		const organizations = this.organizationData ? this.validateDataFields(this.organizationData) : true;
-		organizations ? this.userRegister.organization = this.organizationData : false;
-		const representatives = this.userRegister.representatives || this.userRegister.representatives !== emptyArray ? this.validateDataFields(this.userRegister.representatives) : true;
+		const organizations = (this.organizationData !== undefined ? this.validateDataFields(this.organizationData) : true);
+		const representatives = (this.userRegister.representatives || this.userRegister.representatives !== emptyArray ? this.validateDataFields(this.userRegister.representatives) : true);
 
 		return (userDataIsValid && addressDataIsValid && organizations && representatives);
 	}
@@ -116,7 +115,7 @@ export class CompleteRegistrationComponent implements OnInit {
 
 	register() {
 		if(this.validateRegister()){
-			
+
 			this.clearDataByPersonType();
 			this.registerService.register(this.userRegister)
 			.subscribe(data => {

@@ -76,7 +76,7 @@
 	<div class="block">
 		<h4>Para qual instituição deseja realizar sua doação?</h4>
 		<div>
-			<ng-select [clearable]="false" [(ngModel)]="distributorSelected" [items]="distributorsList" bindLabel="name" (change)="setDonationDistributorId()">
+			<ng-select [clearable]="false" [(ngModel)]="distributorSelected" [items]="distributorsList" bindLabel="name" (change)="setDonationDistributorId(); donationIsValid()">
 			</ng-select>
 		</div>
 		<div class="row">

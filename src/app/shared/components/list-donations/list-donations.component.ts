@@ -1,9 +1,10 @@
 import { DonationsService } from 'src/app/services/donations/donations.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { actionsDonation, emptyString, profilesTypes } from 'src/app/shared/utils/constants';
+import { actionsDonation, DateFormats, emptyString, profilesTypes } from 'src/app/shared/utils/constants';
 import { Component, Input, OnInit } from '@angular/core';
 import { donationPackagesStatus } from '../../utils/constants';
 import { Router } from '@angular/router';
+import Utilities from '../../utils/utilities';
 
 @Component({
   selector: 'app-list-donations',
@@ -153,6 +154,14 @@ export class ListDonationsComponent implements OnInit {
 
 	goToHome(){
 		this.router.navigate(['/home']);
+	}
+
+	convertDate(dateToConvert: string){
+		return Utilities.convertDateToShow(dateToConvert, DateFormats.DateTimeZoneISO);
+	}
+
+	convertTime(dateToConvert: string){
+		return Utilities.convertTimeToShow(dateToConvert, DateFormats.DateTimeZoneISO);
 	}
 }
 

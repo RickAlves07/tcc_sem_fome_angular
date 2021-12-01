@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DateFormats } from '../../utils/constants';
+import Utilities from '../../utils/utilities';
 
 @Component({
   selector: 'app-list-provisions',
@@ -13,4 +15,7 @@ export class ListProvisionsComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	convertDate(dateToConvert: string){
+		return Utilities.convertDateToShow(dateToConvert, DateFormats.DateTimeZoneISO);
+	}
 }

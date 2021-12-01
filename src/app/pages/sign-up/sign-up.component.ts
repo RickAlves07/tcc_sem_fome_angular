@@ -20,6 +20,10 @@ export class SignUpComponent implements OnInit {
 
 	public disableRegisterButton: boolean = true;
 
+	private emailsAlreadyInUse = [''];
+
+	public showAlreadyInUse: boolean = false;
+
 	constructor(
 		private title: Title,
 		private router: Router,
@@ -58,5 +62,23 @@ export class SignUpComponent implements OnInit {
 			this.disableRegisterButton = true;
 		}
 		return isValid;
+	}
+
+	checkEmail(){
+		this.registerService.checkIfEmailAlreadyRegistered(this.userRegister.user.email)
+		.subscribe(
+			resp => {
+				if(!resp){
+					this.goToProfileTypeChoice();
+				}
+			},
+			err => {
+				this.emailsAlreadyInUse.push(this.userRegister.user.email)
+				this.showAlreadyInUse = true;
+		})
+	}
+
+	compareEmail(){
+		this.showAlreadyInUse = this.emailsAlreadyInUse.includes(this.userRegister.user.email)
 	}
 }

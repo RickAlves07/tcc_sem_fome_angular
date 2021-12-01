@@ -44,7 +44,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="box-profile" *ngIf="donation?.donation_shipment?.shipment_transporter_user?.id !== getUserId()" >
+	<div class="box-profile" *ngIf="donation?.donation_shipment?.shipment_transporter_user?.id !== getUserId() && (donation?.donation_shipment !== undefined && donation?.donation_shipment !== null )" >
 		<label>
 			Dados do Transportador
 		</label>

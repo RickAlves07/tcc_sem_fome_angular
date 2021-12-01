@@ -6,6 +6,10 @@ export default class Utilities {
 		return moment(date, format).format(DateFormats.DateOnlyFormatPtBr);
 	}
 
+	static convertTimeToShow(date: string, format: string) {
+		return moment(date, format).format(DateFormats.TimeDefaultFormat);
+	}
+
 	static convertDateToSend(date: string, format: string) {
 		return moment(date, format).format(DateFormats.DateTimeZoneISO);
 	}

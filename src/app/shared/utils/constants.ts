@@ -7,6 +7,7 @@ export const DateFormats = {
 	DateOnlyDefaultFormat: "YYYY-MM-DD",
 	DateTimeOnlyFormatPtBr: "DD/MM/YYYY HH:mm",
 	DateTimeDefaultFormat: "YYYY-MM-DDTHH:mm:ss",
+	TimeDefaultFormat: "HH:mm",
 	DateTimeZoneISO: 'YYYY-MM-DDTHH:mm:ss.sssZ'
 }
 

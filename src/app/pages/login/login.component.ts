@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { emptyString } from 'src/app/shared/utils/constants';
 
 @Component({
 	selector: 'app-login',
@@ -12,12 +13,16 @@ export class LoginComponent implements OnInit {
 
 	public loading: boolean = false;
 
-	public error: string = '';
+	public error: string = emptyString;
 
 	public userLogin = {
-		email: '',
-		password: '',
+		email: emptyString,
+		password: emptyString,
 	}
+
+	private wrongPasswords = [emptyString];
+
+	public showWrongPassword: boolean = false;
 
 	constructor(
 		private title: Title,
@@ -46,8 +51,12 @@ export class LoginComponent implements OnInit {
 				this.authenticationService.goToHome(data);
 			},
 			err => {
-				this.error = err;
-				this.loading = false;
-			});
+				this.wrongPasswords.push(this.userLogin.password)
+				this.showWrongPassword = true;
+		});
+	}
+
+	comparePassword(){
+		this.showWrongPassword = this.wrongPasswords.includes(this.userLogin.password);
 	}
 }

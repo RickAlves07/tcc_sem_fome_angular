@@ -174,4 +174,5 @@ export class AuthenticationService implements CanActivate{
 		this.setLocalStorage(data);
 		this.router.navigate(['/home']);
 	}
+
 }

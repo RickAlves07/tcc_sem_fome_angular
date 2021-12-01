@@ -10,7 +10,7 @@
 				Data de Doação
 			</label>
 			<span>
-				{{ donation?.createdAt }}
+				{{ convertDate(donation?.createdAt) }}
 			</span>
 		</div>
 		<div class="column">
@@ -18,7 +18,15 @@
 				Data Agendada
 			</label>
 			<span>
-				{{ donation?.scheduled_at }}
+				{{ convertDate(donation?.scheduled_at) }}
+			</span>
+		</div>
+		<div class="column">
+			<label>
+				Horário
+			</label>
+			<span>
+				{{ convertTime(donation?.scheduled_at) }}
 			</span>
 		</div>
 		<div class="column">
@@ -111,6 +119,6 @@
 		</div>
 	</div>
 </div>
-<div *ngIf="donationsList.length === 0" class="donation" class="donation-item">
+<div *ngIf="donationsList?.length === 0" class="donation" class="donation-item">
 	<span>Não há doações</span>
 </div>
