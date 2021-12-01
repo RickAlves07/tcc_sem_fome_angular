@@ -18,10 +18,6 @@ export class ListDonationsComponent implements OnInit {
 	canConfirmCollected(listIndex: number)
 	{
 		const status = this.donationsList[listIndex]?.status;
-		return ((
-			status !== donationPackagesStatus.WaitingForPickup &&
-			status !== donationPackagesStatus.OnDeliveryRoute &&
-			status === donationPackagesStatus.OnDeliveryRoute
-		 ) ? true : false)
+		return ((status !== donationPackagesStatus.WaitingForPickup) ? true : false );
 	}
 }

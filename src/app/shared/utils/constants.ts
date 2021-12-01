@@ -42,10 +42,15 @@ export const donationsByStatusToReturnByRouteParam = {
 		donationPackagesStatus.WaitingForPickup,
 		donationPackagesStatus.OnDeliveryRoute,
 	],
-	'Recebido': [
+	'received': [
 		donationPackagesStatus.Delivered,
 		donationPackagesStatus.Received,
 	],
+	'shipment-in-progress': [
+		donationPackagesStatus.WaitingForPickup,
+		donationPackagesStatus.OnDeliveryRoute,
+		donationPackagesStatus.ReturningToDonor,
+	]
 }
 
 export const profilesTypes = {
