@@ -41,6 +41,53 @@
 			</span>
 		</div>
 	</div>
+	<div class="donation-buttons">
+		<div *ngIf="canCancelDonation(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.cancelDonation)">
+				<span>Cancelar Doação</span>
+			</button>
+		</div>
+		<div *ngIf="canCancelTransport(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.cancelTransport)">
+				<span>Cancelar Transporte</span>
+			</button>
+		</div>
+		<div *ngIf="canCancelTransportAndReturn(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.cancelTransportReturn)">
+				<span>Cancelar e Retornar ao Doador</span>
+			</button>
+		</div>
+		<div *ngIf="canConfirmCollected(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.confirmCollected)">
+				<span>Confirmar Coleta</span>
+			</button>
+		</div>
+		<div *ngIf="canConfirmReceived(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.confirmReceived)">
+				<span>Confirmar Recebimento</span>
+			</button>
+		</div>
+		<div *ngIf="canConfirmDelivered(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.confirmDelivered)">
+				<span>Confirmar Entrega</span>
+			</button>
+		</div>
+		<div *ngIf="canConfirmReturned(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.confirmReturned)">
+				<span>Confirmar Devolução</span>
+			</button>
+		</div>
+		<div *ngIf="canConfirmDonateAgain(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.confirmDonateAgain)">
+				<span>Doar Novamente</span>
+			</button>
+		</div>
+		<div *ngIf="canAcceptTransport(i)" >
+			<button (click)="setActionAndDonationId(i, constActions.acceptTransport)">
+				<span>Aceitar Transportar</span>
+			</button>
+		</div>
+	</div>
 	<div class="shipment-info">
 		<div>
 			<app-shipment-timeline></app-shipment-timeline>

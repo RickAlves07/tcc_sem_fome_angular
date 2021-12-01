@@ -43,4 +43,14 @@ export class DonationsService {
 		return this.http.get(`${this.url}/list`, {
 			params: { pageIndex: 1, pageSize: 10, route: 'in-progress'} });
 	}
+
+	updateDonationAction(action: actionDonation)
+	{
+		return this.http.post(`${this.url}/update`, action);
+	}
+}
+
+type actionDonation ={
+	donation_id: number,
+	action: string,
 }

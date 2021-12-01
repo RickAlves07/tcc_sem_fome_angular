@@ -76,14 +76,14 @@ export const profileTypeIcon = {
 	Distributor: 'uil uil-crockery',
 }
 
-export const actionsDonationMap = {
-	'confirmCollected': 'confirm-collected',
-	'confirmReceived': 'confirm-received',
-	'confirmDelivered': 'confirm-delivered',
-	'confirmReturned': 'confirm-returned',
-	'confirmDonateAgain': 'confirm-donate-again',
-	'cancelDonation': 'cancel-donation',
-	'acceptTransport': 'accept-transport',
-	'cancelTransport': 'cancel-transport',
-	'cancelTransportReturn': 'cancel-transport-return',
+export const actionsDonation = {
+	confirmCollected: 'confirm-collected',
+	confirmReceived: 'confirm-received',
+	confirmDelivered: 'confirm-delivered',
+	confirmReturned: 'confirm-returned',
+	confirmDonateAgain: 'confirm-donate-again',
+	cancelDonation: 'cancel-donation',
+	acceptTransport: 'accept-transport',
+	cancelTransport: 'cancel-transport',
+	cancelTransportReturn: 'cancel-transport-return',
 }

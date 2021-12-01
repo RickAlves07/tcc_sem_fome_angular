@@ -71,6 +71,17 @@ export class AuthenticationService implements CanActivate{
 		return profileString;
 	}
 
+	getUserId() {
+		const profile = Number(localStorage.getItem('userId'));
+		let userId : number = 0;
+		if(profile === null){
+			this.logout();
+		} else {
+			userId = profile;
+		}
+		return userId;
+	}
+
 	getToken() {
 		const token = localStorage.getItem('token');
 		if(token === null){
@@ -84,6 +95,7 @@ export class AuthenticationService implements CanActivate{
 		const icon = this.getProfileIcon(userData.profileType);
 		const profile = this.getProfileTypePortuguese(userData.profileType);
 
+		localStorage.setItem('userId', userData.userId);
 		localStorage.setItem('userName', userData.userName);
 		localStorage.setItem('profileType', userData.profileType);
 		localStorage.setItem('token', userData.token);
@@ -98,11 +110,13 @@ export class AuthenticationService implements CanActivate{
 	}
 
 	private removeLocalStorage(){
-		localStorage.removeItem('name');
-		localStorage.removeItem('profile_type');
-		localStorage.removeItem('organization_name');
+		localStorage.removeItem('userId');
+		localStorage.removeItem('userName');
+		localStorage.removeItem('profileType');
+		localStorage.removeItem('organizationName');
 		localStorage.removeItem('token');
 		localStorage.removeItem('profileIcon');
+		localStorage.removeItem('profileTypePtBr');
 	}
 
 	getProfileIcon(profile: string){
