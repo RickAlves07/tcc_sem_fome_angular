@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
 			data => {
 				this.authenticationService.goToHome(data);
 			},
-			error => {
-				this.error = error;
+			err => {
+				this.error = err;
 				this.loading = false;
 			});
 	}

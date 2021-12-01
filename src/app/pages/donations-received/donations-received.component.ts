@@ -23,7 +23,7 @@ export class DonationsReceivedComponent implements OnInit {
 
 	getDonationsInProgress(){
 		this.donationsService.getListDonationsReceived()
-		.subscribe(data => {
+		.subscribe((data: any) => {
 			this.donationsList = data;
 		})
 	}

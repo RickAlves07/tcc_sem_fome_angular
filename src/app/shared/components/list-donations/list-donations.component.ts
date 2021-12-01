@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
 import { actionsDonation, emptyString, profilesTypes } from 'src/app/shared/utils/constants';
 import { Component, Input, OnInit } from '@angular/core';
 import { donationPackagesStatus } from '../../utils/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-donations',
@@ -23,6 +24,7 @@ export class ListDonationsComponent implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
+		private router: Router,
 		private donationsService: DonationsService,
 	) { }
 
@@ -135,6 +137,7 @@ export class ListDonationsComponent implements OnInit {
 	}
 
 	setActionAndDonationId(listIndex: number, action: string){
+		debugger
 		const actionToSend: actionDonation = {
 			donation_id: this.donationsList[listIndex]?.id,
 			action: action,
@@ -144,6 +147,13 @@ export class ListDonationsComponent implements OnInit {
 
 	sendActionDonation(action: actionDonation){
 		this.donationsService.updateDonationAction(action)
+		.subscribe((data: any) => {
+			this.goToHome()
+		})
+	}
+
+	goToHome(){
+		this.router.navigate(['/home']);
 	}
 }
 

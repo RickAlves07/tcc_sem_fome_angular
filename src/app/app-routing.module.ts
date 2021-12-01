@@ -1,3 +1,4 @@
+import { ShipmentsInProgressComponent } from './pages/shipments-in-progress/shipments-in-progress.component';
 import { UserRegister } from 'src/app/models/user-register';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
 	{ path: 'donations/on-the-way', component: OnTheWayDonationsComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/transfer', component: TransferDonationComponent, canActivate: [AuthenticationService] },
 	{ path: 'donations/transfer/in-progress', component: TransferDonationComponent, canActivate: [AuthenticationService] },
-	{ path: 'shipment/history', component: ShipmentsHistoryComponent, canActivate: [AuthenticationService] },
+	{ path: 'shipments/history', component: ShipmentsHistoryComponent, canActivate: [AuthenticationService] },
+	{ path: 'shipments/in-progress', component: ShipmentsInProgressComponent, canActivate: [AuthenticationService] },
 	{ path: '**', component: NotFoundComponent, canActivate: [AuthenticationService] },
 ];
 

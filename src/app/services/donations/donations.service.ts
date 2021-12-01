@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DonationsService {
 
+	private readonly headerPostOptions: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 	private url = environment.apiUrl + '/donations';
 
 	public newDonation: any;
@@ -39,14 +40,24 @@ export class DonationsService {
 			params: { pageIndex: 1, pageSize: 10, route: 'received'} });
 	}
 
-	getListDonationsInprogress(){
+	getListDonationsInProgress(){
 		return this.http.get(`${this.url}/list`, {
 			params: { pageIndex: 1, pageSize: 10, route: 'in-progress'} });
 	}
 
+	getListShipmentInProgress(){
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'shipment-in-progress'} });
+	}
+
+	getListShipmentHistory(){
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: 'history'} });
+	}
+
 	updateDonationAction(action: actionDonation)
 	{
-		return this.http.post(`${this.url}/update`, action);
+		return this.http.patch(`${this.url}/update`, action);
 	}
 }
 

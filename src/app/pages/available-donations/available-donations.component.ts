@@ -26,7 +26,7 @@ export class AvailableDonationsComponent implements OnInit {
 
 	getDonationsInProgress(){
 		this.donationsService.getListAvailableToShip()
-		.subscribe(data => {
+		.subscribe((data: any) => {
 			this.donationsList = data;
 		})
 	}

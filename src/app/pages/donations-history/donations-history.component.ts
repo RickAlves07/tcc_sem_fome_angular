@@ -25,7 +25,7 @@ export class DonationsHistoryComponent implements OnInit {
 
 	getDonationsInProgress(){
 		this.donationsService.getListHistory()
-		.subscribe(data => {
+		.subscribe((data: any) => {
 			this.donationsList = data;
 		})
 	}

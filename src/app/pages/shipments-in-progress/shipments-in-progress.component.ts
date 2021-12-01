@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { DonationsService } from 'src/app/services/donations/donations.service';
 
 @Component({
-	selector: 'app-shipments-history',
-	templateUrl: './shipments-history.component.html',
-	styleUrls: ['./shipments-history.component.scss']
+  selector: 'app-shipments-in-progress',
+  templateUrl: './shipments-in-progress.component.html',
+  styleUrls: ['./shipments-in-progress.component.scss']
 })
-export class ShipmentsHistoryComponent implements OnInit {
-
-
+export class ShipmentsInProgressComponent implements OnInit {
 	constructor(
 		private authenticationService: AuthenticationService,
 		private donationsService: DonationsService,
@@ -23,7 +20,7 @@ export class ShipmentsHistoryComponent implements OnInit {
 	}
 
 	getDonationsInProgress(){
-		this.donationsService.getListShipmentHistory()
+		this.donationsService.getListShipmentInProgress()
 		.subscribe((data: any) => {
 			this.donationsList = data;
 		});

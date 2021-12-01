@@ -27,7 +27,7 @@ export class OnTheWayDonationsComponent implements OnInit {
 
 	getDonationsInProgress(){
 		this.donationsService.getListOnTheWayDonations()
-		.subscribe(data => {
+		.subscribe((data: any) => {
 			this.donationsList = data;
 		})
 	}

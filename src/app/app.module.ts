@@ -29,6 +29,8 @@ import { ProfileTypeChoiceComponent } from './pages/profile-type-choice/profile-
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DonationsInProgressComponent } from './pages/donations-in-progress/donations-in-progress.component';
 import { CompleteRegistrationComponent } from './pages/complete-registration/complete-registration.component';
+import { ShipmentsInProgressComponent } from './pages/shipments-in-progress/shipments-in-progress.component';
+import { ProfileInfosComponent } from './shared/components/profile-infos/profile-infos.component';
 
 
 @NgModule({
@@ -56,6 +58,8 @@ import { CompleteRegistrationComponent } from './pages/complete-registration/com
 		ProfileTypeChoiceComponent,
 		CompleteRegistrationComponent,
 		DonationsInProgressComponent,
+		ShipmentsInProgressComponent,
+		ProfileInfosComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -82,6 +82,17 @@ export class AuthenticationService implements CanActivate{
 		return userId;
 	}
 
+	getOrganizationName() {
+		const profile = Number(localStorage.getItem('organizationName'));
+		let organizationName : number = 0;
+		if(profile === null){
+			this.logout();
+		} else {
+			organizationName = profile;
+		}
+		return organizationName;
+	}
+
 	getToken() {
 		const token = localStorage.getItem('token');
 		if(token === null){

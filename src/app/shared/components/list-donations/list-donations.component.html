@@ -1,13 +1,10 @@
 <div *ngFor="let donation of donationsList; let i = index" class="donation" class="donation-item">
 	<div>
-		<div class="column">
-			<label>
-				Status:
-			</label>
-			<span>
-				{{ donation?.status }}
-			</span>
-		</div>
+		<span>
+			Status: {{ donation?.status }}
+		</span>
+	</div>
+	<div>
 		<div class="column">
 			<label>
 				Data de Doação
@@ -43,65 +40,60 @@
 	</div>
 	<div class="donation-buttons">
 		<div *ngIf="canCancelDonation(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.cancelDonation)">
+			<button (click)="setActionAndDonationId(i, constActions.cancelDonation)" class="action">
 				<span>Cancelar Doação</span>
 			</button>
 		</div>
 		<div *ngIf="canCancelTransport(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.cancelTransport)">
+			<button (click)="setActionAndDonationId(i, constActions.cancelTransport)" class="action">
 				<span>Cancelar Transporte</span>
 			</button>
 		</div>
 		<div *ngIf="canCancelTransportAndReturn(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.cancelTransportReturn)">
+			<button (click)="setActionAndDonationId(i, constActions.cancelTransportReturn)" class="action">
 				<span>Cancelar e Retornar ao Doador</span>
 			</button>
 		</div>
 		<div *ngIf="canConfirmCollected(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.confirmCollected)">
+			<button (click)="setActionAndDonationId(i, constActions.confirmCollected)" class="action">
 				<span>Confirmar Coleta</span>
 			</button>
 		</div>
 		<div *ngIf="canConfirmReceived(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.confirmReceived)">
+			<button (click)="setActionAndDonationId(i, constActions.confirmReceived)" class="action">
 				<span>Confirmar Recebimento</span>
 			</button>
 		</div>
 		<div *ngIf="canConfirmDelivered(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.confirmDelivered)">
+			<button (click)="setActionAndDonationId(i, constActions.confirmDelivered)" class="action">
 				<span>Confirmar Entrega</span>
 			</button>
 		</div>
 		<div *ngIf="canConfirmReturned(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.confirmReturned)">
+			<button (click)="setActionAndDonationId(i, constActions.confirmReturned)" class="action">
 				<span>Confirmar Devolução</span>
 			</button>
 		</div>
 		<div *ngIf="canConfirmDonateAgain(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.confirmDonateAgain)">
+			<button (click)="setActionAndDonationId(i, constActions.confirmDonateAgain)" class="action">
 				<span>Doar Novamente</span>
 			</button>
 		</div>
 		<div *ngIf="canAcceptTransport(i)" >
-			<button (click)="setActionAndDonationId(i, constActions.acceptTransport)">
+			<button (click)="setActionAndDonationId(i, constActions.acceptTransport)" class="action">
 				<span>Aceitar Transportar</span>
 			</button>
 		</div>
 	</div>
-	<div class="shipment-info">
+	<!-- <div class="shipment-info">
 		<div>
 			<app-shipment-timeline></app-shipment-timeline>
 		</div>
-	</div>
+	</div> -->
 	<div>
-		<div class="profile-info">
+		<div class="profile-infos">
 			<div>
-				<app-shipment-timeline></app-shipment-timeline>
-			</div>
-		</div>
-		<div class="profile-info">
-			<div>
-				<app-shipment-timeline></app-shipment-timeline>
+				<app-profile-infos [donation]="donation"></app-profile-infos>
 			</div>
 		</div>
 	</div>
@@ -112,8 +104,13 @@
 		<label>
 			Comentários
 		</label>
-		<span>
-			{{ donation?.comments }}
-		</span>
+		<div class="box">
+			<span>
+				{{ donation?.comments }}
+			</span>
+		</div>
 	</div>
+</div>
+<div *ngIf="donationsList.length === 0" class="donation" class="donation-item">
+	<span>Não há doações</span>
 </div>

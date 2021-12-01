@@ -1,0 +1,12 @@
+<div class="back-button">
+	<i class="uil uil-angle-left-b"></i>
+	<a [routerLink]="['/home']">
+		Voltar
+	</a>
+</div>
+<section>
+	<div>
+		<app-list-donations [donationsList]="donationsList?.rows"></app-list-donations>
+	</div>
+</section>
+

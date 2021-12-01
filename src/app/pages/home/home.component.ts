@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 		{
 			text: 'Entregas em Progresso',
 			iconClass: '',
-			route: 'shipments/history',
+			route: 'shipments/in-progress',
 		},
 		{
 			text: 'Entregas Realizadas',
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
 		{
 			text: 'Nova Doação',
 			iconClass: '',
-			route: 'donation/new',
+			route: 'donations/new',
 		},
 		{
 			text: 'Doações Realizadas',

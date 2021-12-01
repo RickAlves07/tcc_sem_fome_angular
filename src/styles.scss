@@ -78,6 +78,12 @@ button
 	border-radius: var(--border-radius-default);
 }
 
+button.action
+{
+	border-radius: calc(var(--border-radius-default) + 1rem);
+	min-width: 8rem;
+}
+
 button:hover
 {
 	background-color: var(--text-color);
@@ -132,4 +138,12 @@ a
 	position: absolute;
 	top: 0;
 	margin-top: 1rem;
+}
+
+.box
+{
+	font-family: var(--body-font);
+	border: solid 2px var(--text-color);
+	padding: .5rem;
+	border-radius: var(--border-radius-default);
 }
