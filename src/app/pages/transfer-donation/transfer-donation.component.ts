@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { DonationsService } from 'src/app/services/donations/donations.service';
 
 @Component({
 	selector: 'app-transfer-donation',
@@ -8,13 +10,25 @@ import { Title } from '@angular/platform-browser';
 })
 export class TransferDonationComponent implements OnInit {
 
+
 	constructor(
-		private title: Title
+		private authenticationService: AuthenticationService,
+		private title: Title,
+		private donationsService: DonationsService
 	) {
-		this.title.setTitle('TCC CC - Inicio')
+		this.title.setTitle('TCC CC - Inicio');
 	}
+	donationsList: any = [];
 
 	ngOnInit(): void {
+		this.getDonationsInProgress();
+	}
+
+	getDonationsInProgress(){
+		this.donationsService.getListDonationsReceived()
+		.subscribe((data: any) => {
+			this.donationsList = data;
+		})
 	}
 
 }

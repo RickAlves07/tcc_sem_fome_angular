@@ -10,7 +10,9 @@ export class DonationsService {
 	private readonly headerPostOptions: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 	private url = environment.apiUrl + '/donations';
 
-	public newDonation: any;
+	public newDonation: any = {
+		provisions: [],
+	}
 
 	public distributorData: any;
 

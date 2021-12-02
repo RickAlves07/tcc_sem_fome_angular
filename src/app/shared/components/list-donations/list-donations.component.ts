@@ -104,6 +104,15 @@ export class ListDonationsComponent implements OnInit {
 		) ? true : false );
 	}
 
+	canTransfer(listIndex: number)
+	{
+		const status = this.donationsList[listIndex]?.status;
+		return ((
+			(status === donationPackagesStatus.Received) &&
+			(this.userProfileType === profilesTypes.Distributor)
+		) ? true : false );
+	}
+
 	canCancelTransport(listIndex: number)
 	{
 		const status = this.donationsList[listIndex]?.status;
@@ -163,6 +172,13 @@ export class ListDonationsComponent implements OnInit {
 	convertTime(dateToConvert: string){
 		return Utilities.convertTimeToShow(dateToConvert, DateFormats.DateTimeZoneISO);
 	}
+
+	goToPageTransfer(index: number)
+	{
+		this.donationsService.newDonation.provisions = this.donationsList[index].donation_provisions;
+		this.router.navigate(['donations/transfer/new']);
+	}
+
 }
 
 type actionDonation ={

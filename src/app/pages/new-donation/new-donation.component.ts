@@ -33,12 +33,21 @@ export class NewDonationComponent implements OnInit {
 		private donationsService: DonationsService,
 		private organizationService: OrganizationService,
 	) {
-		this.title.setTitle('TCC CC - Realizar Uma Doação');
+		this.title.setTitle('TCC CC - Nova Doação');
 		this.getDistributorsList();
 	}
 
 	ngOnInit(): void {
+		this.getDonationDataToTransfer();
+	}
 
+	getDonationDataToTransfer(){
+debugger
+		this.donation = {...this.donationsService.newDonation};
+		this.provisions = this.donation.provisions;
+		for(let i in this.provisions){
+			this.provisions[i].id = undefined;
+		}
 	}
 
 	getDistributorsList(){
@@ -130,7 +139,7 @@ export class NewDonationComponent implements OnInit {
 	}
 
 	setDonationData(){
-		this.donationsService.distributorData = {...this.distributorSelected};
+		this.donationsService.newDonation = {...this.donation };
 	}
 
 	async calcProvisionTotalWeight(){

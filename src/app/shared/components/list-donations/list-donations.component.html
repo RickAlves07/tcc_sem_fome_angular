@@ -92,6 +92,11 @@
 				<span>Aceitar Transportar</span>
 			</button>
 		</div>
+		<div *ngIf="canTransfer(i)" >
+			<button (click)="goToPageTransfer(i)" class="action">
+				<span>Transferir Doação</span>
+			</button>
+		</div>
 	</div>
 	<!-- <div class="shipment-info">
 		<div>
