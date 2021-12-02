@@ -152,9 +152,9 @@ export class NewDonationComponent implements OnInit {
 	async calcDonationTotalWeightAndItens(){
 		this.donation.total_weight = 0;
 		this.donation.total_items = 0;
-		for(let i = 0; i < this.provisions.length; i++){
-			this.donation.total_weight = this.provisions[i].total_weight;
-			this.donation.total_items = this.provisions[i].quantity;
+		for(let i = 0; i <= this.provisions.length; i++){
+			this.donation.total_weight += this.provisions[i].total_weight;
+			this.donation.total_items += this.provisions[i].quantity;
 		}
 	}
 }
