@@ -1,27 +1,46 @@
-# TccSemFomeAngular
+<h1 align="center">Sistema Integrado de Distribuição de Alimentos - Interface (Frontend)</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+Trabalho de Conclusão de Curso apresentado como requisito parcial para obtenção de Bacharel em Ciência da Computação pelo Centro Universitário Carioca - UNICARIOCA
 
-## Development server
+## Requisitos
+### Node
+Faça o download e instalação do Node LTS, disponivel em:
+<br>https://nodejs.org/pt-br/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Git (Opcional)
+Faça o download e instalação do Git , disponivel em:
+<br>https://gitforwindows.org/
 
-## Code scaffolding
+## Preparação do ambiente
+### Download do Projeto
+#### Com Git:
+Faça o clone do repositório em uma pasta de sua preferência abrindo um terminal e executando o  comando:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`git clone https://github.com/RickAlves07/tcc_sem_fome_angular.git`
 
-## Build
+#### Sem Git:
+Ou faça o Download dos arquivos clicando no botão `Code` e em `Download ZIP`, extraia os arquivos em uma pasta de sua preferência.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Instalação das dependências do projeto
+Abra um terminal na pasta onde se encontra o projeto, e execute os comandos:
+#### Angular Cli
+`npm install -g @angular/cli`
 
-## Running unit tests
+#### Dependências
+`npm install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Executando o projeto
+Abra um terminal na pasta onde se encontra o projeto, e execute o comando:`
 
-## Running end-to-end tests
+`ng serve`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## API Rest 
+Para o uso da API, realize o passo a passo para uso da Interface disponivel em:
+<br>https://github.com/RickAlves07/tcc_sem_fome_node
 
-## Further help
+## Desenvolvido por:
+*Rick Alves*
+- LinkedIn: [@rickalves07](https://linkedin.com/in/rickalves07)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+*Johann Palheiros*
+- LinkedIn: [@johannpalheiros](https://linkedin.com/in/johannpalheiros)
