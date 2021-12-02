@@ -42,7 +42,6 @@ export class NewDonationComponent implements OnInit {
 	}
 
 	getDonationDataToTransfer(){
-debugger
 		this.donation = {...this.donationsService.newDonation};
 		this.provisions = this.donation.provisions;
 		for(let i in this.provisions){
@@ -135,6 +134,7 @@ debugger
 
 	setDonationDistributorId(){
 		this.donation.organization_distributor_id = this.distributorSelected.id;
+		this.donationsService.distributorData = this.distributorSelected;
 		this.setDonationData();
 	}
 

@@ -33,7 +33,7 @@ export class DonationCheckUpComponent implements OnInit {
 
 	checkIfHasDonation(){
 
-		if(this.newDonation.provisions === undefined || this.newDonation.provisions === emptyArray){
+		if(this.newDonation.provisions === undefined || this.newDonation.provisions.length === 0){
 			this.goToNewDonation();
 		}
 	}
@@ -50,6 +50,7 @@ export class DonationCheckUpComponent implements OnInit {
 
 
 	confirmDonation() {
+
 		this.donationsService.saveNewDonation(this.newDonation)
 		.subscribe(data => {
 			this.router.navigate(['/home']);
