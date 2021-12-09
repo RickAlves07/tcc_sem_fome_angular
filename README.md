@@ -38,6 +38,9 @@ Abra um terminal na pasta onde se encontra o projeto, e execute o comando:`
 Para o uso da API, realize o passo a passo para uso da Interface disponivel em:
 <br>https://github.com/RickAlves07/tcc_sem_fome_node
 
+## Protótipos
+<br>https://xd.adobe.com/view/b584fa58-bbb4-4aee-a9b9-e7b442283c87-e0d7/grid
+
 ## Desenvolvido por:
 *Rick Alves*
 - LinkedIn: [@rickalves07](https://linkedin.com/in/rickalves07)
