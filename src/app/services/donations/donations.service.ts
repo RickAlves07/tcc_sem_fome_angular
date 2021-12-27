@@ -1,3 +1,4 @@
+import { statusToReturnByRouteParamList } from './../../shared/utils/constants';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -24,37 +25,47 @@ export class DonationsService {
 
 	getListHistory(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'history'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.History} });
 	}
 
 	getListAvailableToShip(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'available'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.Available} });
 	}
 
 	getListOnTheWayDonations(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'on-the-way'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.OnTheWay} });
 	}
 
 	getListDonationsReceived(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'received'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.Received} });
 	}
 
 	getListDonationsInProgress(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'in-progress'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.InProgress} });
 	}
 
 	getListShipmentInProgress(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'shipment-in-progress'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.ShipmentsInProgress} });
 	}
 
 	getListShipmentHistory(){
 		return this.http.get(`${this.url}/list`, {
-			params: { pageIndex: 1, pageSize: 10, route: 'history'} });
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.ShipmentsHistory} });
+	}
+
+	getListTransfersHistory(){
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.TransfersHistory} });
+	}
+
+	getListTransfersInProgress(){
+		return this.http.get(`${this.url}/list`, {
+			params: { pageIndex: 1, pageSize: 10, route: statusToReturnByRouteParamList.TransfersInProgress} });
 	}
 
 	updateDonationAction(action: actionDonation)
