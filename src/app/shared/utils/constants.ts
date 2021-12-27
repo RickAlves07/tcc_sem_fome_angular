@@ -88,3 +88,15 @@ export const actionsDonation = {
 	cancelTransport: 'cancel-transport',
 	cancelTransportReturn: 'cancel-transport-return',
 }
+
+export const statusToReturnByRouteParamList = {
+	InProgress:'in-progress',
+	History: 'history',
+	Available: 'available',
+	OnTheWay:'on-the-way',
+	Received: 'received',
+	ShipmentsInProgress: 'shipments-in-progress',
+	ShipmentsHistory: 'shipments-history',
+	TransfersHistory: 'transfers-history',
+	TransfersInProgress: 'transfers-in-progress',
+}
